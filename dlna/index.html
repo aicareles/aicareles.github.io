@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cast Receiver - DLNA & AirPlay | 专业媒体投屏应用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        .download-btn:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Compatibility Section */
+        .compatibility {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .compatibility h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .device-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .device-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .device-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .device-card .device-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Supported Formats */
+        .formats {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .formats h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .format-category {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .format-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .format-list {
+            list-style: none;
+        }
+
+        .format-list li {
+            padding: 0.3rem 0;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Cast Receiver</div>
+            <ul class="nav-links">
+                <li><a href="#features">功能特色</a></li>
+                <li><a href="#compatibility">设备兼容</a></li>
+                <li><a href="#formats">支持格式</a></li>
+                <li><a href="#download">下载</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Cast Receiver</h1>
+                <p>强大的双协议媒体服务器应用，支持 DLNA 和 AirPlay 无线投屏，让您的 Android 设备变身专业媒体中心</p>
+                <a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" class="download-btn">
+                    📱 在 Google Play 下载
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>双协议支持</h3>
+                    <p>完美支持 DLNA 和 AirPlay 双协议，实现跨平台无线投屏，兼容 iOS、Android、Mac、PC 等各种设备</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>零配置发现</h3>
+                    <p>自动网络发现功能，无需复杂设置，即插即用，让设备连接变得简单快捷</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>低延迟传输</h3>
+                    <p>优化的传输算法，确保媒体内容实时播放，提供流畅的观看体验</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3>高清画质</h3>
+                    <p>支持高清视频传输，保证画面质量，让您享受影院级的观看效果</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>稳定连接</h3>
+                    <p>智能网络适配技术，保证连接稳定性，避免播放中断的困扰</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>简洁界面</h3>
+                    <p>用户友好的界面设计，操作简单直观，让所有用户都能轻松上手</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility Section -->
+    <section class="compatibility" id="compatibility">
+        <div class="container">
+            <h2>设备兼容性</h2>
+            <div class="device-grid">
+                <div class="device-card">
+                    <div class="device-icon">📺</div>
+                    <h3>Android TV</h3>
+                    <p>完美支持</p>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">📱</div>
+                    <h3>智能手机</h3>
+                    <p>全面兼容</p>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">💻</div>
+                    <h3>平板设备</h3>
+                    <p>优化适配</p>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">🖥️</div>
+                    <h3>电视盒子</h3>
+                    <p>专业优化</p>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">🍎</div>
+                    <h3>iOS 设备</h3>
+                    <p>原生支持</p>
+                </div>
+                <div class="device-card">
+                    <div class="device-icon">🖥️</div>
+                    <h3>Mac/PC</h3>
+                    <p>跨平台</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Formats -->
+    <section class="formats" id="formats">
+        <div class="container">
+            <h2>支持的媒体格式</h2>
+            <div class="formats-grid">
+                <div class="format-category">
+                    <h3>🎬 视频格式</h3>
+                    <ul class="format-list">
+                        <li>MP4 高清视频</li>
+                        <li>AVI 格式</li>
+                        <li>MKV 格式</li>
+                        <li>MOV 格式</li>
+                    </ul>
+                </div>
+                <div class="format-category">
+                    <h3>🎵 音频格式</h3>
+                    <ul class="format-list">
+                        <li>MP3 音乐</li>
+                        <li>FLAC 无损</li>
+                        <li>AAC 格式</li>
+                        <li>更多音频格式</li>
+                    </ul>
+                </div>
+                <div class="format-category">
+                    <h3>🖼️ 图片格式</h3>
+                    <ul class="format-list">
+                        <li>JPEG 图片</li>
+                        <li>PNG 图片</li>
+                        <li>高清图像显示</li>
+                        <li>相册浏览</li>
+                    </ul>
+                </div>
+                <div class="format-category">
+                    <h3>📺 流媒体</h3>
+                    <ul class="format-list">
+                        <li>M3U 播放列表</li>
+                        <li>M3U8 直播流</li>
+                        <li>AirPlay 兼容格式</li>
+                        <li>网络流媒体</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="download">
+        <div class="container">
+            <h2>立即体验专业投屏</h2>
+            <p>将您的 Android 设备转换为专业媒体中心，支持多设备无线投屏</p>
+            <a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" class="download-btn">
+                📱 免费下载 Cast Receiver
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cast Receiver. 专业的媒体投屏解决方案</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Add entrance animation to feature cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .device-card, .format-category').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
