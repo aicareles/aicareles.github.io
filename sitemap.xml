@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+  <!-- Updated: 2025-09-25 -->
   <!-- 主页 -->
   <url>
     <loc>https://aicareles.github.io/</loc>
-    <lastmod>2025-09-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- Cast Receiver 项目页面 -->
   <url>
     <loc>https://aicareles.github.io/dlna/index.html</loc>
-    <lastmod>2025-09-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
