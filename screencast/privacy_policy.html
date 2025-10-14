@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Screen Cast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .lang-switch {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .lang-switch button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            margin: 0 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .lang-switch button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .lang-switch button.active {
+            background: #764ba2;
+        }
+        
+        .language-content {
+            display: none;
+        }
+        
+        .language-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .highlight-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .highlight-box.info {
+            background: #e3f2fd;
+            border-left-color: #2196f3;
+        }
+        
+        .highlight-box.warning {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 Privacy Policy</h1>
+            <p>Screen Cast - Mirror to TV</p>
+        </div>
+        
+        <div class="content">
+            <div class="lang-switch">
+                <button onclick="switchLang('en')" class="active" id="btn-en">English</button>
+                <button onclick="switchLang('zh')" id="btn-zh">中文</button>
+            </div>
+            
+            <!-- English Version -->
+            <div class="language-content active" id="content-en">
+                <div class="highlight-box">
+                    <p><span class="emoji">✅</span><strong>Your Privacy is Protected</strong></p>
+                    <p>Screen Cast respects your privacy and does not collect, store, or share any personal information. This app operates entirely on your device and local network.</p>
+                </div>
+                
+                <h2>1. Information We DO NOT Collect</h2>
+                <p>Screen Cast is designed with privacy as a priority. We do not collect:</p>
+                <ul>
+                    <li><span class="emoji">❌</span>Personal identification information (name, email, phone number)</li>
+                    <li><span class="emoji">❌</span>Device information or identifiers</li>
+                    <li><span class="emoji">❌</span>Usage data or analytics</li>
+                    <li><span class="emoji">❌</span>Location data</li>
+                    <li><span class="emoji">❌</span>Media files or content you cast</li>
+                    <li><span class="emoji">❌</span>Network information beyond local discovery</li>
+                    <li><span class="emoji">❌</span>IPTV sources or playlists</li>
+                    <li><span class="emoji">❌</span>Any other personal data</li>
+                </ul>
+                
+                <h2>2. How the App Works</h2>
+                <p>Screen Cast operates entirely on your device and local network:</p>
+                <ul>
+                    <li><span class="emoji">📱</span><strong>Local Processing:</strong> All casting operations are performed directly between your device and the target display device (TV, Chromecast, etc.)</li>
+                    <li><span class="emoji">🔍</span><strong>Device Discovery:</strong> The app scans your local network to find compatible devices using standard protocols (DLNA, UPnP, Chromecast)</li>
+                    <li><span class="emoji">🎬</span><strong>Media Streaming:</strong> When you cast content, it is streamed directly from your device to the receiving device without passing through our servers</li>
+                    <li><span class="emoji">📺</span><strong>No Cloud Storage:</strong> Nothing is uploaded to the cloud or external servers</li>
+                </ul>
+                
+                <h2>3. Permissions Required</h2>
+                <p>Screen Cast requires certain Android permissions to function. Here's why each permission is needed:</p>
+                
+                <h3>🔌 Network Access</h3>
+                <p><strong>Why needed:</strong> To discover casting devices on your local network and stream content to them.</p>
+                <p><strong>What we do:</strong> Only used to establish direct connections with casting devices on your WiFi network.</p>
+                
+                <h3>📂 Storage Access</h3>
+                <p><strong>Why needed:</strong> To allow you to select photos, videos, and music files for casting.</p>
+                <p><strong>What we do:</strong> Only read files you explicitly select. We do not scan or access other files.</p>
+                
+                <h3>📷 Camera/Microphone (Optional)</h3>
+                <p><strong>Why needed:</strong> Only if you choose to use screen mirroring features.</p>
+                <p><strong>What we do:</strong> Stream content only when you actively use the mirroring feature.</p>
+                
+                <div class="highlight-box info">
+                    <p><span class="emoji">ℹ️</span><strong>Permission Note:</strong> All permissions are used solely for app functionality. No data leaves your device except for the content you choose to cast to your local network devices.</p>
+                </div>
+                
+                <h2>4. IPTV Feature Disclaimer</h2>
+                <div class="highlight-box warning">
+                    <p><span class="emoji">⚠️</span><strong>Important Notice</strong></p>
+                    <p>The IPTV import feature allows you to add and play your own IPTV sources. Please note:</p>
+                    <ul>
+                        <li>We do not provide, store, or distribute any IPTV content or sources</li>
+                        <li>You are solely responsible for ensuring your IPTV sources are legal and authorized</li>
+                        <li>We do not monitor, review, or control the content you import</li>
+                        <li>Users must comply with all applicable copyright laws and regulations</li>
+                        <li>The app only provides technical playback functionality</li>
+                    </ul>
+                </div>
+                
+                <h2>5. Third-Party Services</h2>
+                <p>Screen Cast may interact with third-party protocols and services:</p>
+                
+                <h3>DLNA/UPnP</h3>
+                <p>Open standard protocols for local network device communication. No data is sent to external servers.</p>
+                
+                <h3>Google Chromecast</h3>
+                <p>When casting to Chromecast devices, your content is sent directly to the Chromecast device. Google's Chromecast privacy policy applies to the Chromecast device itself, not to our app.</p>
+                
+                <div class="highlight-box info">
+                    <p><span class="emoji">🔗</span><strong>Third-Party Note:</strong> We do not control and are not responsible for the privacy practices of third-party device manufacturers or service providers.</p>
+                </div>
+                
+                <h2>6. Data Security</h2>
+                <p>Even though we don't collect data, we take security seriously:</p>
+                <ul>
+                    <li><span class="emoji">🔒</span>All casting operations occur over your local network</li>
+                    <li><span class="emoji">🛡️</span>No data is transmitted to external servers</li>
+                    <li><span class="emoji">💾</span>App preferences are stored locally on your device only</li>
+                    <li><span class="emoji">🔐</span>No account creation or login required</li>
+                </ul>
+                
+                <h2>7. Children's Privacy</h2>
+                <p>Screen Cast does not knowingly collect any information from anyone, including children under 13. The app is designed to be safe for all ages.</p>
+                
+                <h2>8. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this Privacy Policy periodically.</p>
+                
+                <h2>9. Your Rights</h2>
+                <p>Since we don't collect any personal data:</p>
+                <ul>
+                    <li><span class="emoji">✅</span>There is no data to access, modify, or delete</li>
+                    <li><span class="emoji">✅</span>You maintain complete control over what you cast</li>
+                    <li><span class="emoji">✅</span>You can uninstall the app at any time with no data retention</li>
+                </ul>
+                
+                <h2>10. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy or Screen Cast's privacy practices, please contact us:</p>
+                <div class="contact-info">
+                    <p><span class="emoji">📧</span><strong>Email:</strong> <a href="mailto:support@screencast.app">support@screencast.app</a></p>
+                    <p><span class="emoji">🌐</span><strong>Website:</strong> <a href="https://screencast.app">www.screencast.app</a></p>
+                </div>
+                
+                <h2>11. Consent</h2>
+                <p>By using Screen Cast, you consent to this Privacy Policy and agree to its terms.</p>
+            </div>
+            
+            <!-- Chinese Version -->
+            <div class="language-content" id="content-zh">
+                <div class="highlight-box">
+                    <p><span class="emoji">✅</span><strong>您的隐私受到保护</strong></p>
+                    <p>Screen Cast 尊重您的隐私，不收集、存储或共享任何个人信息。本应用完全在您的设备和本地网络上运行。</p>
+                </div>
+                
+                <h2>1. 我们不收集的信息</h2>
+                <p>Screen Cast 以隐私为优先设计。我们不收集：</p>
+                <ul>
+                    <li><span class="emoji">❌</span>个人身份信息（姓名、邮箱、电话号码）</li>
+                    <li><span class="emoji">❌</span>设备信息或标识符</li>
+                    <li><span class="emoji">❌</span>使用数据或分析</li>
+                    <li><span class="emoji">❌</span>位置数据</li>
+                    <li><span class="emoji">❌</span>您投屏的媒体文件或内容</li>
+                    <li><span class="emoji">❌</span>本地发现之外的网络信息</li>
+                    <li><span class="emoji">❌</span>IPTV 源或播放列表</li>
+                    <li><span class="emoji">❌</span>任何其他个人数据</li>
+                </ul>
+                
+                <h2>2. 应用工作原理</h2>
+                <p>Screen Cast 完全在您的设备和本地网络上运行：</p>
+                <ul>
+                    <li><span class="emoji">📱</span><strong>本地处理：</strong>所有投屏操作直接在您的设备和目标显示设备（电视、Chromecast 等）之间进行</li>
+                    <li><span class="emoji">🔍</span><strong>设备发现：</strong>应用扫描您的本地网络，使用标准协议（DLNA、UPnP、Chromecast）查找兼容设备</li>
+                    <li><span class="emoji">🎬</span><strong>媒体流传输：</strong>当您投屏内容时，内容直接从您的设备流传输到接收设备，不经过我们的服务器</li>
+                    <li><span class="emoji">📺</span><strong>无云存储：</strong>没有任何内容上传到云端或外部服务器</li>
+                </ul>
+                
+                <h2>3. 所需权限</h2>
+                <p>Screen Cast 需要某些 Android 权限才能正常运行。以下是每个权限的用途：</p>
+                
+                <h3>🔌 网络访问</h3>
+                <p><strong>需要原因：</strong>在本地网络上发现投屏设备并向其流传输内容。</p>
+                <p><strong>我们的做法：</strong>仅用于与您 WiFi 网络上的投屏设备建立直接连接。</p>
+                
+                <h3>📂 存储访问</h3>
+                <p><strong>需要原因：</strong>允许您选择要投屏的照片、视频和音乐文件。</p>
+                <p><strong>我们的做法：</strong>仅读取您明确选择的文件。我们不扫描或访问其他文件。</p>
+                
+                <h3>📷 相机/麦克风（可选）</h3>
+                <p><strong>需要原因：</strong>仅当您选择使用屏幕镜像功能时。</p>
+                <p><strong>我们的做法：</strong>仅在您主动使用镜像功能时流传输内容。</p>
+                
+                <div class="highlight-box info">
+                    <p><span class="emoji">ℹ️</span><strong>权限说明：</strong>所有权限仅用于应用功能。除了您选择投屏到本地网络设备的内容外，没有数据离开您的设备。</p>
+                </div>
+                
+                <h2>4. IPTV 功能免责声明</h2>
+                <div class="highlight-box warning">
+                    <p><span class="emoji">⚠️</span><strong>重要提示</strong></p>
+                    <p>IPTV 导入功能允许您添加和播放自己的 IPTV 源。请注意：</p>
+                    <ul>
+                        <li>我们不提供、存储或分发任何 IPTV 内容或源</li>
+                        <li>您有责任确保您的 IPTV 源合法且经过授权</li>
+                        <li>我们不监控、审查或控制您导入的内容</li>
+                        <li>用户必须遵守所有适用的版权法律法规</li>
+                        <li>应用仅提供技术播放功能</li>
+                    </ul>
+                </div>
+                
+                <h2>5. 第三方服务</h2>
+                <p>Screen Cast 可能与第三方协议和服务交互：</p>
+                
+                <h3>DLNA/UPnP</h3>
+                <p>用于本地网络设备通信的开放标准协议。没有数据发送到外部服务器。</p>
+                
+                <h3>Google Chromecast</h3>
+                <p>投屏到 Chromecast 设备时，您的内容直接发送到 Chromecast 设备。Google 的 Chromecast 隐私政策适用于 Chromecast 设备本身，而不适用于我们的应用。</p>
+                
+                <div class="highlight-box info">
+                    <p><span class="emoji">🔗</span><strong>第三方说明：</strong>我们不控制也不对第三方设备制造商或服务提供商的隐私做法负责。</p>
+                </div>
+                
+                <h2>6. 数据安全</h2>
+                <p>即使我们不收集数据，我们也非常重视安全：</p>
+                <ul>
+                    <li><span class="emoji">🔒</span>所有投屏操作都在您的本地网络上进行</li>
+                    <li><span class="emoji">🛡️</span>没有数据传输到外部服务器</li>
+                    <li><span class="emoji">💾</span>应用偏好设置仅存储在您的设备本地</li>
+                    <li><span class="emoji">🔐</span>无需创建账户或登录</li>
+                </ul>
+                
+                <h2>7. 儿童隐私</h2>
+                <p>Screen Cast 不会故意收集任何人的信息，包括 13 岁以下的儿童。该应用设计为适合所有年龄段。</p>
+                
+                <h2>8. 隐私政策变更</h2>
+                <p>我们可能会不时更新本隐私政策。任何变更将发布在此页面上，并更新"最后更新"日期。我们建议您定期查看本隐私政策。</p>
+                
+                <h2>9. 您的权利</h2>
+                <p>由于我们不收集任何个人数据：</p>
+                <ul>
+                    <li><span class="emoji">✅</span>没有数据可供访问、修改或删除</li>
+                    <li><span class="emoji">✅</span>您完全控制投屏的内容</li>
+                    <li><span class="emoji">✅</span>您可以随时卸载应用，不会保留任何数据</li>
+                </ul>
+                
+                <h2>10. 联系我们</h2>
+                <p>如果您对本隐私政策或 Screen Cast 的隐私做法有任何疑问，请联系我们：</p>
+                <div class="contact-info">
+                    <p><span class="emoji">📧</span><strong>邮箱：</strong><a href="mailto:superliu0911@gmail.com">superliu0911@gmail.com</a></p>
+                </div>
+                
+                <h2>11. 同意</h2>
+                <p>使用 Screen Cast 即表示您同意本隐私政策并同意其条款。</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Last Updated:</strong> October 14, 2025</p>
+            <p><strong>最后更新：</strong>2025年10月14日</p>
+            <p style="margin-top: 20px; color: #999; font-size: 0.9em;">
+                © 2025 Screen Cast. All rights reserved.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function switchLang(lang) {
+            // Hide all content
+            document.querySelectorAll('.language-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.lang-switch button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected language
+            document.getElementById('content-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
