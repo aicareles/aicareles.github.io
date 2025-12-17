@@ -1,5 +1,5 @@
 User-agent: *
-Allow: /
+Allow: /app-ads.txt
 
 # Sitemap
 Sitemap: https://aicareles.github.io/sitemap.xml
