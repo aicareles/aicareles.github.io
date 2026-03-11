@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Omnix AI</title>
+    <title>Privacy Policy - OmniDoc AI</title>
     <style>
         * {
             margin: 0;
@@ -246,113 +246,125 @@
     <div class="container">
         <div class="header">
             <h1>Privacy Policy</h1>
-            <p>Omnix AI</p>
+            <p>OmniDoc AI: Image & PDF</p>
         </div>
 
         <div class="content">
             <div class="last-updated">
-                Last Updated: December 8, 2024
+                Last Updated: March 11, 2025
             </div>
 
             <h2>Introduction</h2>
-            <p>Welcome to Omnix AI. We are committed to protecting your privacy and ensuring transparency about how we handle your information. This Privacy Policy explains our practices regarding data collection, usage, and protection when you use Omnix AI.</p>
+            <p>Welcome to OmniDoc AI. We are committed to protecting your privacy and ensuring transparency about how we handle your information. This Privacy Policy explains our practices regarding data collection, usage, and protection when you use OmniDoc AI.</p>
 
             <h2>Information We Collect</h2>
 
             <h3>Information We Do Not Collect</h3>
             <div class="info-block">
-                <strong>Omnix AI does not collect, store, or retain any personal user data.</strong>
+                <strong>OmniDoc AI does not collect, store, or retain any personal user data.</strong>
                 <p>We do not collect personal identification information, store account credentials, track your location, collect usage analytics, store conversation history, retain uploaded content, use tracking technologies, or share data with third-party advertisers.</p>
             </div>
 
             <h3>Information Processed Temporarily</h3>
-            <p>When you use Omnix AI's features, your data is processed temporarily to provide the requested service:</p>
+            <p>When you use OmniDoc AI's features, your data is processed temporarily to provide the requested service:</p>
             <ul>
-                <li><strong>Text Summarization</strong> — Text content is sent to Google's Gemini AI for processing</li>
-                <li><strong>Image Analysis</strong> — Images are transmitted to Gemini API for analysis</li>
-                <li><strong>AI Image Generation</strong> — Your prompts are processed to generate images</li>
-                <li><strong>Image Editing</strong> — Images and editing instructions are processed</li>
-                <li><strong>Intelligent Chat</strong> — Your messages are sent to Gemini for responses</li>
-                <li><strong>Document Processing</strong> (upcoming) — Documents will be processed for AI-powered features</li>
+                <li><strong>PDF Merge & Split</strong> — PDF files are processed locally on your device to merge or split pages. No content is sent to external servers.</li>
+                <li><strong>Image to PDF</strong> — Images are converted to PDF entirely on your device. No content leaves your phone.</li>
+                <li><strong>PDF Watermark Removal</strong> — PDF pages are rendered as images and transmitted to Replicate's AI API for watermark removal, then returned to you immediately.</li>
+                <li><strong>Image Watermark Removal</strong> — Images and mask data are transmitted to Replicate's LaMa AI API for inpainting, then returned to you immediately.</li>
+                <li><strong>Image Enhancement & Upscaling</strong> — Images are transmitted to Replicate's Real-ESRGAN AI API for super-resolution processing, then returned to you immediately.</li>
             </ul>
 
             <div class="info-block">
                 <strong>Important</strong>
-                <p>All data processing happens in real-time. Once your request is complete, we do not retain any of your content on our servers.</p>
+                <p>All AI-powered processing happens in real-time via Replicate's API. Once your request is complete, neither we nor Replicate retain your content. Local features (PDF merge, split, image to PDF) are processed entirely on your device and never leave it.</p>
             </div>
 
             <h2>Third-Party Services</h2>
 
-            <h3>Google Gemini AI via Firebase</h3>
-            <p>Omnix AI uses Google's Gemini AI model through Firebase Generative AI to power all AI features. When you use our app, your content is transmitted to Google's servers, processed using Gemini AI, and the result is returned to you through our app. Neither we nor Google store your content after processing.</p>
+            <h3>Replicate AI API</h3>
+            <p>OmniDoc AI uses Replicate's API to power AI features including watermark removal and image enhancement. When you use these features, your images or documents are transmitted to Replicate's servers, processed by AI models (LaMa, Real-ESRGAN), and the result is returned to you. Replicate does not retain your content after processing.</p>
+            <p>For more information, please review <a href="https://replicate.com/privacy" target="_blank">Replicate's Privacy Policy</a>.</p>
 
-            <p>According to Google's policy, data sent to Gemini API is not used to train Google's models, is not retained after processing, and is processed according to Google's security standards. For more information, please review <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a> and <a href="https://firebase.google.com/terms" target="_blank">Firebase Terms of Service</a>.</p>
+            <h3>Google Play Billing</h3>
+            <p>If you make in-app purchases, payment information is handled entirely by Google Play. We never see or store your payment details. Google Play's privacy policy applies to all billing information, and purchase records are maintained by Google, not us.</p>
 
             <h3>No Other Third Parties</h3>
-            <p>We do not integrate any other third-party services, analytics tools, or advertising networks.</p>
+            <p>We do not integrate any analytics tools, advertising networks, or other third-party tracking services.</p>
 
             <h2>How We Use Your Data</h2>
-            <p>Since we don't collect or store data, we cannot use it for any purpose beyond providing immediate AI services. Your data is processed only to fulfill your immediate request, transmitted securely to Gemini API, not stored on our servers, not used for analytics or marketing, not shared with anyone except Google's AI service, and not used to train our own models.</p>
+            <p>Since we don't collect or store data, we cannot use it for any purpose beyond providing immediate services. Your data is processed only to fulfill your immediate request, transmitted securely to Replicate's API where applicable, not stored on our servers, not used for analytics or marketing, and not used to train our own models.</p>
+
+            <h2>Local vs. Cloud Processing</h2>
+
+            <h3>Processed Locally (Never Leaves Your Device)</h3>
+            <ul>
+                <li>PDF Merge</li>
+                <li>PDF Split</li>
+                <li>Image to PDF conversion</li>
+            </ul>
+
+            <h3>Processed via Replicate API (Transmitted Securely)</h3>
+            <ul>
+                <li>PDF Watermark Removal</li>
+                <li>Image Watermark Removal</li>
+                <li>Image Enhancement & Upscaling</li>
+            </ul>
 
             <h2>Data Security</h2>
-            <p>While we don't store your data, we take security seriously. All data transmitted between your device and Google's servers is encrypted using industry-standard protocols. We don't store sensitive data on your device, leverage Firebase's enterprise-grade security infrastructure, and don't require account creation, eliminating password-related risks.</p>
+            <p>While we don't store your data, we take security seriously. All data transmitted between your device and Replicate's servers is encrypted using industry-standard HTTPS protocols. We don't store sensitive data on your device beyond the output files you choose to save, and we don't require account creation, eliminating password-related risks.</p>
 
             <h2>Your Rights and Choices</h2>
 
             <h3>What You Control</h3>
-            <p>You decide what content to input into the app. You can uninstall the app at any time. Since we don't create accounts or store data, there's nothing to delete.</p>
+            <p>You decide what content to input into the app. You can uninstall the app at any time. Since we don't create accounts or store data, there is nothing to delete on our end.</p>
 
             <h3>Data Requests</h3>
-            <p>Since we don't collect or store personal data, there is no data to access, correct, or delete. We cannot provide data portability or fulfill data deletion requests.</p>
+            <p>Since we don't collect or store personal data, there is no data to access, correct, or delete. We cannot provide data portability or fulfill data deletion requests. For questions about how Replicate handles your data, please contact Replicate directly.</p>
 
             <h2>Children's Privacy</h2>
-            <p>Omnix AI does not knowingly collect data from children under 13. Since we don't collect any data at all, the app can be used by anyone. However, parental supervision is recommended for minors, and children should not input personal information into AI prompts.</p>
+            <p>OmniDoc AI does not knowingly collect data from children under 13. Since we don't collect any data at all, the app can be used by anyone. However, parental supervision is recommended for minors, and children should not input personal information into the app.</p>
 
             <h2>International Data Transfers</h2>
-            <p>When you use Omnix AI, your data is transmitted to Google's servers, which may be located worldwide. Google processes data according to their global infrastructure. Data transfer is necessary to provide AI services, and all transfers are protected by encryption.</p>
+            <p>When you use AI-powered features in OmniDoc AI, your data is transmitted to Replicate's servers, which may be located worldwide. All transfers are protected by encryption and handled according to Replicate's data processing standards.</p>
 
             <h2>Changes to Privacy Policy</h2>
             <p>We may update this Privacy Policy to reflect new features, changes in legal requirements, or updates to third-party services. When we make changes, the "Last Updated" date will be revised, significant changes will be communicated through the app, and continued use after changes constitutes acceptance.</p>
 
-            <h2>In-App Purchases</h2>
-            <p>If you make in-app purchases, payment information is handled entirely by Google Play. We never see or store your payment details. Google Play's privacy policy applies to billing information, and purchase records are maintained by Google, not us.</p>
-
             <h2>Legal Compliance</h2>
-            <p>We comply with applicable privacy laws including GDPR, CCPA, and other data protection regulations. Since we don't collect data, most data protection obligations don't apply, but we maintain transparency about how your data flows through our app.</p>
+            <p>We comply with applicable privacy laws including GDPR, CCPA, and other data protection regulations. Since we don't collect data, most data protection obligations don't apply, but we maintain full transparency about how your data flows through our app and third-party services.</p>
 
             <h2>Limitations of Liability</h2>
             <div class="notice-block">
-                While we strive to protect your privacy, we cannot control Google's data practices. We are not responsible for content you choose to input. You should not input sensitive personal information. AI-generated content may be inaccurate; use at your own discretion.
+                While we strive to protect your privacy, we cannot control Replicate's data practices beyond what is stated in their privacy policy. We are not responsible for content you choose to input. You should not input highly sensitive personal information into AI-powered features. AI-generated results may vary in accuracy; use at your own discretion.
             </div>
 
             <h2>Your Responsibilities</h2>
-            <p>When using Omnix AI, please don't input highly sensitive personal information, credentials, passwords, or financial data. Don't input content you want to keep completely private. Understand that data goes to Google's AI for processing, review Google's privacy policy, and use the app responsibly and ethically.</p>
-
-            <h2>Future Features</h2>
-            <p>As we add new AI capabilities, this privacy policy will be updated accordingly. Our core principle remains: we don't collect or store your data. All processing will continue through Google's Gemini AI, and you'll be notified of significant privacy-related changes.</p>
+            <p>When using OmniDoc AI, please don't input highly sensitive personal information, credentials, passwords, or financial data into AI-powered features. Understand that AI features transmit data to Replicate's servers for processing. Review Replicate's privacy policy if you have concerns about cloud processing. Use the app responsibly and ethically.</p>
 
             <div class="contact-section">
                 <h2>Contact Us</h2>
                 <p>If you have questions about this Privacy Policy or our privacy practices:</p>
                 <p><strong>Email:</strong> <a href="mailto:superliu0911@gmail.com">superliu0911@gmail.com</a></p>
                 <p><strong>App Support:</strong> Available through Google Play Store app page</p>
-                <p style="margin-top: 24px; font-size: 0.95em;">Since we don't collect data, we cannot respond to data access or deletion requests. For questions about how Google handles your data, please contact Google directly.</p>
+                <p style="margin-top: 24px; font-size: 0.95em;">Since we don't collect data, we cannot respond to data access or deletion requests. For questions about how Replicate handles your data, please contact Replicate directly.</p>
             </div>
 
             <h2>Consent</h2>
-            <p>By using Omnix AI, you acknowledge that you have read and understood this Privacy Policy, consent to your data being processed by Google's Gemini AI as described, understand we don't collect or store your personal data, and agree to use the app responsibly.</p>
+            <p>By using OmniDoc AI, you acknowledge that you have read and understood this Privacy Policy, consent to your data being processed by Replicate's AI API for AI-powered features as described, understand that local features never transmit your data, understand we don't collect or store your personal data, and agree to use the app responsibly.</p>
 
             <div class="summary">
                 <h2>Summary</h2>
                 <p><strong>What we collect:</strong> Nothing.</p>
-                <p><strong>What happens to your data:</strong> Sent to Google Gemini for AI processing, returned to you immediately, not stored by us.</p>
-                <p><strong>Your privacy:</strong> Maximum privacy on our end. Google's privacy policy applies to AI processing. You control what you input.</p>
+                <p><strong>Local features (PDF Merge, Split, Image to PDF):</strong> Processed entirely on your device. Data never leaves your phone.</p>
+                <p><strong>AI features (Watermark Removal, Image Enhancement):</strong> Sent to Replicate's API for processing, returned to you immediately, not stored by us or Replicate.</p>
+                <p><strong>Your privacy:</strong> Maximum privacy on our end. Replicate's privacy policy applies to AI processing. You control what you input.</p>
                 <p><strong>Questions?</strong> Contact us at <a href="mailto:superliu0911@gmail.com" style="color: white; border-bottom: 1px solid white;">superliu0911@gmail.com</a></p>
             </div>
         </div>
 
         <div class="footer">
-            <p>Thank you for trusting Omnix AI.</p>
+            <p>Thank you for trusting OmniDoc AI.</p>
             <p style="margin-top: 16px;">This privacy policy should be reviewed by a legal professional before publication.</p>
         </div>
     </div>
