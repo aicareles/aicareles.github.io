@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MacFree - Clean Your Mac</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+    background: #09090b;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* nav */
+
+.nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 28px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    color: #a1a1aa;
+}
+
+
+/* hero */
+
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 24px 40px;
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: rgba(96,165,250,.12);
+    color: #93c5fd;
+    font-size: 14px;
+}
+
+
+.hero h1 {
+    font-size: 76px;
+    line-height: 1.05;
+    letter-spacing: -4px;
+    margin: 30px 0 20px;
+}
+
+.hero h1 span {
+    background: linear-gradient(
+        90deg,
+        #60a5fa,
+        #a78bfa
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color:#a1a1aa;
+    font-size:22px;
+    line-height:1.6;
+}
+
+
+.buttons {
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+
+.btn {
+    padding:15px 32px;
+    border-radius:14px;
+    font-size:16px;
+    transition:.3s;
+}
+
+.primary {
+    background:white;
+    color:black;
+}
+
+.primary:hover {
+    transform:translateY(-3px);
+}
+
+
+.secondary {
+    border:1px solid #27272a;
+    background:#18181b;
+}
+
+
+
+/* mac window */
+
+.mac {
+    max-width:900px;
+    margin:90px auto;
+    background:#111113;
+    border-radius:24px;
+    padding:20px;
+    box-shadow:
+    0 40px 100px rgba(0,0,0,.5);
+}
+
+
+.window {
+    border-radius:18px;
+    background:#18181b;
+    padding:30px;
+}
+
+
+.dots {
+    display:flex;
+    gap:8px;
+    margin-bottom:30px;
+}
+
+.dot {
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#52525b;
+}
+
+
+.dashboard {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+
+.card {
+    background:#09090b;
+    padding:25px;
+    border-radius:18px;
+}
+
+
+.big-number {
+    font-size:48px;
+    font-weight:700;
+}
+
+
+.gray {
+    color:#a1a1aa;
+}
+
+
+.progress {
+    height:8px;
+    background:#27272a;
+    border-radius:20px;
+    margin-top:15px;
+}
+
+.progress div {
+    height:100%;
+    width:70%;
+    background:#60a5fa;
+    border-radius:20px;
+}
+
+
+
+/* features */
+
+.section {
+    max-width:1200px;
+    margin:120px auto;
+    padding:0 24px;
+}
+
+
+.title {
+    text-align:center;
+    font-size:48px;
+    letter-spacing:-2px;
+}
+
+
+.subtitle {
+    text-align:center;
+    color:#a1a1aa;
+    margin-top:15px;
+}
+
+
+.features {
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+
+.feature {
+    background:#111113;
+    border:1px solid #27272a;
+    padding:35px;
+    border-radius:24px;
+}
+
+
+.icon {
+    font-size:40px;
+}
+
+
+.feature h3 {
+    font-size:24px;
+}
+
+
+.feature p {
+    color:#a1a1aa;
+    line-height:1.6;
+}
+
+
+/* pro */
+
+.pro {
+    max-width:700px;
+    margin:auto;
+    background:
+    linear-gradient(
+        145deg,
+        #18181b,
+        #09090b
+    );
+    border:1px solid #27272a;
+    padding:50px;
+    border-radius:30px;
+    text-align:center;
+}
+
+
+.price {
+    font-size:60px;
+    font-weight:700;
+}
+
+
+.list {
+    text-align:left;
+    margin:30px auto;
+    max-width:300px;
+    line-height:2;
+    color:#d4d4d8;
+}
+
+
+/* footer */
+
+footer {
+    padding:50px;
+    text-align:center;
+    color:#71717a;
+}
+
+
+/* mobile */
+
+@media(max-width:800px){
+
+.hero h1 {
+    font-size:48px;
+}
+
+.features {
+    grid-template-columns:1fr;
+}
+
+.dashboard {
+    grid-template-columns:1fr;
+}
+
+.nav-links {
+    display:none;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<nav class="nav">
+
+<div class="logo">
+Mac<span>Free</span>
+</div>
+
+<div class="nav-links">
+<a href="#">Features</a>
+<a href="#">Download</a>
+<a href="#">Support</a>
+</div>
+
+</nav>
+
+
+
+<section class="hero">
+
+
+<div class="badge">
+Designed for macOS
+</div>
+
+
+<h1>
+Clean your Mac.<br>
+<span>Keep it fast.</span>
+</h1>
+
+
+<p>
+Free up storage, remove unnecessary files,
+and keep your Mac running smoothly.
+Everything happens locally on your device.
+</p>
+
+
+<div class="buttons">
+
+<a class="btn primary">
+Download Free
+</a>
+
+<a class="btn secondary">
+Get Pro $9.99
+</a>
+
+</div>
+
+
+<div class="mac">
+
+
+<div class="window">
+
+
+<div class="dots">
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+</div>
+
+
+<div class="dashboard">
+
+
+<div class="card">
+
+<div class="gray">
+Recoverable Space
+</div>
+
+<div class="big-number">
+23.8 GB
+</div>
+
+
+<div class="progress">
+<div></div>
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="gray">
+Scan Result
+</div>
+
+<h2>
+Clean Ready
+</h2>
+
+<p class="gray">
+Junk Files 12.4GB<br>
+Large Files 8.7GB<br>
+Unused Apps 2.7GB
+</p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="section">
+
+
+<h2 class="title">
+Everything you need
+</h2>
+
+<p class="subtitle">
+Simple tools to reclaim your Mac space.
+</p>
+
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="icon">
+🔍
+</div>
+
+<h3>
+Deep Scan
+</h3>
+
+<p>
+Find hidden files and discover
+what is taking up your storage.
+</p>
+
+</div>
+
+
+
+<div class="feature">
+
+<div class="icon">
+✨
+</div>
+
+<h3>
+Smart Cleanup
+</h3>
+
+<p>
+Remove unnecessary files safely
+with a clean modern workflow.
+</p>
+
+</div>
+
+
+
+<div class="feature">
+
+<div class="icon">
+🚀
+</div>
+
+<h3>
+App Uninstaller
+</h3>
+
+<p>
+Remove apps completely with
+leftover files.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="section">
+
+
+<div class="pro">
+
+
+<h2>
+MacFree Pro
+</h2>
+
+
+<div class="price">
+$9.99
+</div>
+
+
+<p>
+Lifetime license.
+No subscription.
+</p>
+
+
+<div class="list">
+
+✓ Full Disk Scan<br>
+✓ App Uninstaller<br>
+✓ Smart Cleanup<br>
+✓ Lifetime Updates
+
+</div>
+
+
+<a class="btn primary">
+Buy Now
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+<footer>
+
+© 2026 Leox. All rights reserved.
+
+</footer>
+
+
+
+</body>
+</html>
