@@ -4,589 +4,752 @@
     <meta name="google-site-verification" content="KxJ2j4l6RvPWmoFclqcWNWm11qvGsmKdk3TJm9-uEWc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cast Receiver - DLNA & AirPlay Wireless Casting App | Android Media Server</title>
+    <title>Cast Receiver - DLNA & AirPlay Receiver for Android & Smart TV</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Cast Receiver is a powerful dual-protocol media casting app supporting DLNA and AirPlay wireless streaming. Transform your Android device into a professional media center with cross-platform casting for iPhone, iPad, Mac, PC.">
-    <meta name="keywords" content="DLNA,AirPlay,wireless casting,media streaming,Android casting,iPhone casting,TV casting,media server,Cast Receiver,screen mirroring">
+    <meta name="description" content="Turn your Android Phone, TV, or TV Box into an AirPlay and DLNA receiver. Ultra-low latency 4K wireless media streaming from iOS, Mac, Windows, and Android.">
+    <meta name="keywords" content="DLNA Receiver, AirPlay Receiver, Android TV Casting, Screen Mirroring, Media Server, Wireless Receiver, Cast Receiver">
     <meta name="author" content="Cast Receiver">
     <meta name="robots" content="index, follow">
     <meta name="language" content="en">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Cast Receiver - DLNA & AirPlay Wireless Casting App">
-    <meta property="og:description" content="Professional dual-protocol media casting app that enables cross-platform wireless streaming on your Android device">
+    <!-- Open Graph & Twitter -->
+    <meta property="og:title" content="Cast Receiver - Ultimate AirPlay & DLNA Receiver for Android">
+    <meta property="og:description" content="Seamlessly cast photos, videos, and music from Apple and Android devices to your Android TV or phone.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aicareles.github.io/dlna/index">
     <meta property="og:image" content="https://aicareles.github.io/dlna/cast-receiver-preview.jpg">
-    <meta property="og:site_name" content="Cast Receiver">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cast Receiver - DLNA & AirPlay Wireless Casting App">
-    <meta name="twitter:description" content="Professional dual-protocol media casting app for cross-platform wireless streaming solutions">
-    <meta name="twitter:image" content="https://aicareles.github.io/dlna/cast-receiver-preview.jpg">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://aicareles.github.io/dlna/index">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Cast Receiver - DLNA & AirPlay",
-      "operatingSystem": "Android",
-      "applicationCategory": "MultimediaApplication",
-      "description": "Powerful dual-protocol media server app supporting DLNA and AirPlay wireless casting, transforming Android devices into professional media centers",
-      "url": "https://aicareles.github.io/dlna/index",
-      "downloadUrl": "https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver",
-      "author": {
-        "@type": "Organization",
-        "name": "Cast Receiver"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.5",
-        "reviewCount": "100"
-      }
-    }
-    </script>
     <style>
+        :root {
+            --bg-dark: #0b0f17;
+            --bg-card: rgba(22, 30, 46, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Header */
+        /* Ambient Glow Background */
+        .glow-bg {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%);
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header Navigation */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            background: rgba(11, 15, 23, 0.75);
+            border-bottom: 1px solid var(--border-color);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            height: 72px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
         }
 
         .nav-links {
             display: flex;
+            gap: 32px;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
+            color: var(--text-muted);
             text-decoration: none;
-            color: #333;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: #fff;
+        }
+
+        .nav-cta {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
+            position: relative;
+            padding-top: 160px;
+            padding-bottom: 80px;
             text-align: center;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
         }
 
-        .hero-content {
-            width: 100%;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(139, 92, 246, 0.12);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 30px;
+            color: #c084fc;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.2s forwards;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #A5B4FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.4s forwards;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin: 0 auto 36px;
         }
 
-        .download-btn {
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: #4CAF50;
-            color: white;
-            padding: 1rem 2rem;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .download-btn:hover {
-            background: #45a049;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Mockup Container */
+        .mockup-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .mockup-inner {
+            background: #000;
+            border-radius: 12px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mockup-screen-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .mockup-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #10b981;
+            font-size: 0.9rem;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .protocol-pills {
+            display: flex;
+            gap: 12px;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         /* Features Section */
         .features {
-            padding: 80px 0;
-            background: white;
+            padding: 100px 0;
+            position: relative;
         }
 
-        .features h2 {
+        .section-header {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
         .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            border-radius: 16px;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.4);
         }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 50%;
+        .feature-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .feature-card p {
-            color: #666;
+            color: var(--text-muted);
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        /* Compatibility Section */
-        .compatibility {
+        /* Dual Protocol Section */
+        .protocols {
             padding: 80px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: rgba(15, 23, 42, 0.5);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .compatibility h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .device-grid {
+        .protocol-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
         }
 
-        .device-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
+        .protocol-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
         }
 
-        .device-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .device-card .device-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Supported Formats */
-        .formats {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .formats h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .formats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .format-category {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 2rem;
-            border-radius: 15px;
-            color: white;
-            text-align: center;
-        }
-
-        .format-category h3 {
+        .protocol-box h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .format-list {
-            list-style: none;
+        .protocol-box p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
 
-        .format-list li {
-            padding: 0.3rem 0;
-            opacity: 0.9;
+        .protocol-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        /* CTA Section */
-        .cta {
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #d1d5db;
+        }
+
+        /* Specs Section */
+        .specs {
+            padding: 100px 0;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 18px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .specs-table th {
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .specs-table td {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq {
             padding: 80px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
         }
 
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
         }
 
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .faq-question {
+            padding: 20px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
         }
 
         /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: #07090e;
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 2rem 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .protocol-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+
+    <div class="glow-bg"></div>
+
+    <!-- Header Navigation -->
     <header>
-        <nav class="container">
-            <div class="logo">Cast Receiver</div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#compatibility">Compatibility</a></li>
-                <li><a href="#formats">Formats</a></li>
-                <li><a href="#download">Download</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <div class="logo-icon">📡</div>
+                    <span>Cast Receiver</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#protocols">Protocols</a></li>
+                    <li><a href="#specs">Specs</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" class="nav-cta">Download App</a>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Cast Receiver</h1>
-                <p>Powerful dual-protocol media server application supporting DLNA and AirPlay wireless casting, transforming your Android device into a professional media center</p>
-                <a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" class="download-btn">
-                    📱 Download on Google Play
+            <div class="badge">✨ Dual-Protocol Wireless Receiver</div>
+            <h1>Turn Your Android Device into a<br>Powerful Streaming Receiver</h1>
+            <p>Stream videos, music, and photos directly from iPhone, iPad, Mac, PC, or Android straight to your Android Phone, Tablet, or Android TV.</p>
+            
+            <div class="hero-actions">
+                <a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" class="btn-primary">
+                    <span>📱 Get it on Google Play</span>
                 </a>
             </div>
+
+            <!-- Interactive UI Mockup -->
+            <div class="mockup-wrapper">
+                <div class="mockup-inner">
+                    <div class="mockup-screen-title">Cast Receiver Ready</div>
+                    <div class="mockup-status">
+                        <span class="pulse-dot"></span>
+                        Listening for AirPlay & DLNA connections...
+                    </div>
+                    <div class="protocol-pills">
+                        <span class="pill">Device Name: Living Room TV</span>
+                        <span class="pill">Port: 8008</span>
+                        <span class="pill">4K UHD Capable</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Core Features Grid -->
     <section class="features" id="features">
         <div class="container">
-            <h2>Key Features</h2>
+            <div class="section-header">
+                <h2>Designed for Seamless Casting</h2>
+                <p>Everything you need for zero-latency home entertainment media streaming.</p>
+            </div>
+
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Dual Protocol Support</h3>
-                    <p>Perfect support for both DLNA and AirPlay protocols, enabling cross-platform wireless casting compatible with iOS, Android, Mac, PC, and more</p>
+                    <div class="feature-icon-box">⚡</div>
+                    <h3>Ultra-Low Latency</h3>
+                    <p>Optimized buffer management algorithms ensure smooth real-time mirror sync with minimal delay during streaming.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
+                    <div class="feature-icon-box">📺</div>
+                    <h3>Android TV Native</h3>
+                    <p>Fully tailored interface built for TV remote operation, perfect for Android Smart TVs, Fire TV, and set-top boxes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">🔌</div>
                     <h3>Zero Configuration</h3>
-                    <p>Automatic network discovery with no complex setup required. Plug-and-play functionality makes device connections simple and fast</p>
+                    <p>No manual IP setup needed. Auto-discovery via mDNS allows instant connection from any supported sender device.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Low Latency Streaming</h3>
-                    <p>Optimized transmission algorithms ensure real-time media playback, providing smooth and seamless viewing experiences</p>
+                    <div class="feature-icon-box">🎬</div>
+                    <h3>HD & 4K Playback</h3>
+                    <p>Direct hardware decoding integration to leverage your TV's native GPU for crystal clear high-definition media.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎬</div>
-                    <h3>HD Quality Support</h3>
-                    <p>Supports high-definition video transmission while maintaining picture quality, delivering cinema-grade viewing experience</p>
+                    <div class="feature-icon-box">🎵</div>
+                    <h3>Background Audio</h3>
+                    <p>Keep streaming music and podcasts continuously even when navigating back to your main TV launcher screen.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Stable Connection</h3>
-                    <p>Smart network adaptation technology ensures connection stability, preventing playback interruptions and buffering issues</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Clean Interface</h3>
-                    <p>User-friendly interface design with simple and intuitive operations, making it easy for all users to get started</p>
+                    <div class="feature-icon-box">🔒</div>
+                    <h3>Private & Local</h3>
+                    <p>All network transmissions remain inside your local Wi-Fi network. No media data or telemetry is sent to cloud servers.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Compatibility Section -->
-    <section class="compatibility" id="compatibility">
+    <!-- Protocols Supported -->
+    <section class="protocols" id="protocols">
         <div class="container">
-            <h2>Device Compatibility</h2>
-            <div class="device-grid">
-                <div class="device-card">
-                    <div class="device-icon">📺</div>
-                    <h3>Android TV</h3>
-                    <p>Perfect Support</p>
+            <div class="section-header">
+                <h2>Dual Protocol Architecture</h2>
+                <p>Full cross-platform compatibility without needing multiple receiver apps.</p>
+            </div>
+
+            <div class="protocol-grid">
+                <div class="protocol-box">
+                    <h3>🍎 AirPlay Protocol</h3>
+                    <p>Native integration for Apple ecosystem devices. Cast directly using screen mirroring or video casting from iOS & macOS.</p>
+                    <div class="protocol-tags">
+                        <span class="tag">iPhone</span>
+                        <span class="tag">iPad</span>
+                        <span class="tag">MacBook</span>
+                        <span class="tag">Apple Music</span>
+                        <span class="tag">Safari Video</span>
+                    </div>
                 </div>
-                <div class="device-card">
-                    <div class="device-icon">📱</div>
-                    <h3>Smartphones</h3>
-                    <p>Full Compatible</p>
-                </div>
-                <div class="device-card">
-                    <div class="device-icon">💻</div>
-                    <h3>Tablets</h3>
-                    <p>Optimized</p>
-                </div>
-                <div class="device-card">
-                    <div class="device-icon">🖥️</div>
-                    <h3>TV Box</h3>
-                    <p>Professional</p>
-                </div>
-                <div class="device-card">
-                    <div class="device-icon">🍎</div>
-                    <h3>iOS Devices</h3>
-                    <p>Native Support</p>
-                </div>
-                <div class="device-card">
-                    <div class="device-icon">🖥️</div>
-                    <h3>Mac/PC</h3>
-                    <p>Cross-Platform</p>
+                <div class="protocol-box">
+                    <h3>🌐 DLNA / UPnP</h3>
+                    <p>Universal media receiver supporting all DLNA-compliant media servers, controllers, and Android/PC streaming applications.</p>
+                    <div class="protocol-tags">
+                        <span class="tag">Windows Media Player</span>
+                        <span class="tag">BubbleUPnP</span>
+                        <span class="tag">Synology NAS</span>
+                        <span class="tag">VLC</span>
+                        <span class="tag">Android Apps</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Supported Formats -->
-    <section class="formats" id="formats">
+    <!-- Technical Specs Table -->
+    <section class="specs" id="specs">
         <div class="container">
-            <h2>Supported Media Formats</h2>
-            <div class="formats-grid">
-                <div class="format-category">
-                    <h3>🎬 Video Formats</h3>
-                    <ul class="format-list">
-                        <li>MP4 HD Videos</li>
-                        <li>AVI Format</li>
-                        <li>MKV Format</li>
-                        <li>MOV Format</li>
-                    </ul>
-                </div>
-                <div class="format-category">
-                    <h3>🎵 Audio Formats</h3>
-                    <ul class="format-list">
-                        <li>MP3 Music</li>
-                        <li>FLAC Lossless</li>
-                        <li>AAC Format</li>
-                        <li>More Audio Formats</li>
-                    </ul>
-                </div>
-                <div class="format-category">
-                    <h3>🖼️ Image Formats</h3>
-                    <ul class="format-list">
-                        <li>JPEG Images</li>
-                        <li>PNG Images</li>
-                        <li>HD Image Display</li>
-                        <li>Photo Gallery</li>
-                    </ul>
-                </div>
-                <div class="format-category">
-                    <h3>📺 Streaming</h3>
-                    <ul class="format-list">
-                        <li>M3U Playlists</li>
-                        <li>M3U8 Live Streams</li>
-                        <li>AirPlay Compatible</li>
-                        <li>Network Streaming</li>
-                    </ul>
-                </div>
+            <div class="section-header">
+                <h2>Supported Formats & Specs</h2>
+                <p>Hardware-accelerated media decoding capability.</p>
             </div>
+
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Supported Formats & Standards</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Video Codecs</th>
+                        <td>H.264 / AVC, H.265 / HEVC, VP8, VP9, MPEG-4</td>
+                    </tr>
+                    <tr>
+                        <th>Audio Formats</th>
+                        <td>AAC, MP3, FLAC, WAV, OGG, PCM Direct Audio</td>
+                    </tr>
+                    <tr>
+                        <th>Image Formats</th>
+                        <td>JPEG, PNG, WEBP, GIF</td>
+                    </tr>
+                    <tr>
+                        <th>Streaming Protocols</th>
+                        <td>HTTP Progressive Download, HLS (.m3u8), RTSP, DLNA Digital Media Receiver (DMR)</td>
+                    </tr>
+                    <tr>
+                        <th>System Requirements</th>
+                        <td>Android 5.0 (API Level 21) or higher (Android TV compatible)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="download">
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
         <div class="container">
-            <h2>Experience Professional Casting Now</h2>
-            <p>Transform your Android device into a professional media center with multi-device wireless casting support</p>
-            <a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" class="download-btn">
-                📱 Download Cast Receiver for Free
-            </a>
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div style="max-width: 768px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">Does Cast Receiver require root access or complex setup? <span>+</span></div>
+                    <div class="faq-answer">No. Simply install Cast Receiver on your Android device or Android TV, ensure both devices are connected to the same Wi-Fi network, and start the app. It will instantly appear on your sender device.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I cast content from YouTube or Netflix? <span>+</span></div>
+                    <div class="faq-answer">Cast Receiver supports general AirPlay video streaming and DLNA DMR casting. DRM-protected content (like Netflix) may have restrictions depending on client-side security policies.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why isn't my iPhone finding the TV? <span>+</span></div>
+                    <div class="faq-answer">Please verify that both your iPhone and Android device are on the exact same Wi-Fi router network and that "AP Isolation" (Guest Mode) is disabled in your router settings.</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Cast Receiver. Professional Media Casting Solutions</p>
+            <div class="footer-content">
+                <div>
+                    <div class="logo" style="margin-bottom: 12px;">
+                        <div class="logo-icon">📡</div>
+                        <span>Cast Receiver</span>
+                    </div>
+                    <p style="max-width: 300px; font-size: 0.85rem;">Professional AirPlay & DLNA Receiver for Android & Smart TVs.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#protocols">Protocols</a></li>
+                    <li><a href="#specs">Specs</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver">Google Play Store</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cast Receiver. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Add entrance animation to feature cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // Simple Accordion FAQ
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+                const span = q.querySelector('span');
+                span.textContent = item.classList.contains('active') ? '-' : '+';
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card, .device-card, .format-category').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
         });
     </script>
 </body>
