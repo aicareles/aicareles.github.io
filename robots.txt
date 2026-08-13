@@ -1,17 +1,8 @@
 User-agent: *
-Allow: /app-ads.txt
-
-# Sitemap
-Sitemap: https://aicareles.github.io/sitemap.xml
-
-# Allow all directories and files
-Allow: /dlna/
 Allow: /
 
-# Optional: Crawl delay (in seconds)
-Crawl-delay: 1
+Sitemap: https://aicareles.github.io/sitemap.xml
 
-# Block any potential admin or config directories (if they exist)
 Disallow: /admin/
 Disallow: /config/
 Disallow: /.git/
