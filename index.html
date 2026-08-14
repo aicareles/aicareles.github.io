@@ -1,10 +1,13 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Leox Studio — Software for Media, Creativity & Everyday Life</title>
-<meta name="description" content="Leox Studio builds practical Android apps for video, AI subtitles, DLNA, AirPlay, casting and audio editing. Explore Cast Receiver, Vexo and more.">
+<meta name="description" content="Leox Studio builds practical software for video, AI subtitles, DLNA, AirPlay, casting and audio editing across Android, iOS and macOS. Explore Cast Receiver, Vexo and more.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://aicareles.github.io/">
 <meta name="theme-color" content="#08090b">
@@ -21,25 +24,588 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Leox Studio","url":"https://aicareles.github.io/","description":"Independent software studio building practical software for media, creativity and everyday digital experiences."}</script>
 <style>
-:root{--bg:#08090b;--card:#101216;--card2:#14161b;--text:#f5f7fa;--muted:#a1a6b0;--line:rgba(255,255,255,.09);--max:1160px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(800px 400px at 50% -100px,rgba(255,255,255,.1),transparent 70%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 36px),var(--max));margin:auto}nav{position:sticky;top:0;z-index:10;background:rgba(8,9,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:800;letter-spacing:-.05em}.logo span{font-weight:500;color:#747983}.links{display:flex;gap:28px;align-items:center;font-size:14px;color:var(--muted)}.links a:hover{color:#fff}.pill{border:1px solid var(--line);padding:8px 14px;border-radius:999px;color:#fff}.hero{text-align:center;padding:125px 0 120px}.eyebrow{display:inline-block;border:1px solid var(--line);padding:6px 12px;border-radius:999px;color:var(--muted);font-size:12px}.hero h1{max-width:900px;margin:28px auto 22px;font-size:clamp(48px,8vw,88px);line-height:.98;letter-spacing:-.075em}.hero p{max-width:690px;margin:auto;color:var(--muted);font-size:18px}.buttons{display:flex;justify-content:center;gap:12px;margin-top:32px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 19px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:600}.btn.primary{background:#fff;color:#090a0c;border-color:#fff}.btn:hover{transform:translateY(-2px)}section{padding:88px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}.kicker{text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:#6f747d;margin-bottom:8px}.head h2{margin:0;font-size:clamp(32px,4vw,50px);line-height:1.05;letter-spacing:-.06em}.head p{max-width:430px;color:var(--muted);font-size:14px;margin:0}.feature{display:grid;grid-template-columns:1fr 1fr;gap:18px}.feature-card{min-height:510px;padding:40px;border:1px solid var(--line);border-radius:26px;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 20%,rgba(90,135,255,.2),transparent 32%),var(--card)}.feature-card.vexo{background:radial-gradient(circle at 80% 20%,rgba(180,110,255,.2),transparent 32%),var(--card)}.label{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#b8bdc6}.feature h3{font-size:clamp(34px,4vw,54px);line-height:1;letter-spacing:-.065em;margin:15px 0}.feature p{max-width:510px;color:var(--muted);font-size:15px}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0}.chip{font-size:10px;color:#c8ccd3;border:1px solid var(--line);background:rgba(255,255,255,.035);padding:5px 9px;border-radius:999px}.device{position:absolute;width:210px;height:310px;right:38px;bottom:-75px;border:6px solid #272a30;border-radius:28px;transform:rotate(7deg);background:linear-gradient(160deg,#2a2e36,#0d0e11);box-shadow:0 30px 80px rgba(0,0,0,.55)}.device:before{content:"Google Play screenshot";position:absolute;left:14px;right:14px;top:52px;bottom:18px;border-radius:16px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.08) 0 1px,transparent 1px 34px);display:grid;place-items:center;color:#777d87;font-size:10px}.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.product{min-height:330px;padding:27px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));display:flex;flex-direction:column;transition:.2s}.product:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18)}.icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#292d35,#111216);border:1px solid var(--line);font-weight:700;font-size:18px;margin-bottom:22px}.product h3{margin:0;font-size:23px;letter-spacing:-.04em}.sub{font-size:12px;color:#d2d5db;margin:4px 0 12px}.product p{margin:0;color:var(--muted);font-size:13px}.product .chips{margin-top:18px}.foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center}.play{font-size:13px;font-weight:600}.play:after{content:" ↗";color:#777d87}.platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:25px}.platform{padding:24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}.platform strong{display:block;font-size:18px}.platform span{font-size:12px;color:var(--muted)}.about{display:grid;grid-template-columns:1fr 1fr;gap:80px}.about h2{font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.06em;margin:0}.about p{color:var(--muted)}.principle{padding:18px 0;border-bottom:1px solid var(--line)}.principle strong{display:block}.principle span{color:var(--muted);font-size:13px}footer{border-top:1px solid var(--line);padding:30px 0 45px;color:#6f747d;font-size:12px}.footer{display:flex;justify-content:space-between}.footer strong{color:#cdd1d7}@media(max-width:800px){.feature{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}.about{grid-template-columns:1fr;gap:35px}.device{width:170px;height:250px}}@media(max-width:560px){.wrap{width:min(calc(100% - 26px),var(--max))}.links a:not(.pill){display:none}.hero{padding:90px 0 80px}.hero h1{font-size:50px}.hero p{font-size:16px}.head{display:block}.head p{margin-top:13px}.feature-card{padding:28px;min-height:560px}.products,.platforms{grid-template-columns:1fr}.footer{display:block}.footer span{display:block;margin-top:8px}}
+:root {
+    --bg:#08090b;
+    --card:#101216;
+    --card2:#14161b;
+    --text:#f5f7fa;
+    --muted:#a1a6b0;
+    --line:rgba(255,255,255,.09);
+    --max:1160px}
+
+    * {
+        box-sizing:border-box}
+
+        html {
+            scroll-behavior:smooth}
+
+            body {
+                margin:0;
+                background:radial-gradient(800px 400px at 50% -100px,rgba(255,255,255,.1),transparent 70%),var(--bg);
+                color:var(--text);
+                font-family:Inter,system-ui,sans-serif;
+                line-height:1.6}
+
+                a {
+                    color:inherit;
+                    text-decoration:none}
+
+                    .wrap {
+                        width:min(calc(100% - 36px),var(--max));
+                        margin:auto}
+
+                        nav {
+                            position:sticky;
+                            top:0;
+                            z-index:10;
+                            background:rgba(8,9,11,.72);
+                            backdrop-filter:blur(18px);
+                            border-bottom:1px solid var(--line)}
+
+                            .nav {
+                                height:70px;
+                                display:flex;
+                                align-items:center;
+                                justify-content:space-between}
+
+                                .logo {
+                                    font-weight:800;
+                                    letter-spacing:-.05em}
+
+                                    .logo span {
+                                        font-weight:500;
+                                        color:#747983}
+
+                                        .links {
+                                            display:flex;
+                                            gap:28px;
+                                            align-items:center;
+                                            font-size:14px;
+                                            color:var(--muted)}
+
+                                            .links a:hover {
+                                                color:#fff}
+
+                                                .pill {
+                                                    border:1px solid var(--line);
+                                                    padding:8px 14px;
+                                                    border-radius:999px;
+                                                    color:#fff}
+
+                                                    .hero {
+                                                        text-align:center;
+                                                        padding:125px 0 120px}
+
+                                                        .eyebrow {
+                                                            display:inline-block;
+                                                            border:1px solid var(--line);
+                                                            padding:6px 12px;
+                                                            border-radius:999px;
+                                                            color:var(--muted);
+                                                            font-size:12px}
+
+                                                            .hero h1 {
+                                                                max-width:900px;
+                                                                margin:28px auto 22px;
+                                                                font-size:clamp(48px,8vw,88px);
+                                                                line-height:.98;
+                                                                letter-spacing:-.075em}
+
+                                                                .hero p {
+                                                                    max-width:690px;
+                                                                    margin:auto;
+                                                                    color:var(--muted);
+                                                                    font-size:18px}
+
+                                                                    .buttons {
+                                                                        display:flex;
+                                                                        justify-content:center;
+                                                                        gap:12px;
+                                                                        margin-top:32px;
+                                                                        flex-wrap:wrap}
+
+                                                                        .btn {
+                                                                            display:inline-flex;
+                                                                            align-items:center;
+                                                                            justify-content:center;
+                                                                            min-height:46px;
+                                                                            padding:0 19px;
+                                                                            border-radius:999px;
+                                                                            border:1px solid var(--line);
+                                                                            font-size:14px;
+                                                                            font-weight:600}
+
+                                                                            .btn.primary {
+                                                                                background:#fff;
+                                                                                color:#090a0c;
+                                                                                border-color:#fff}
+
+                                                                                .btn:hover {
+                                                                                    transform:translateY(-2px)}
+
+                                                                                    section {
+                                                                                        padding:88px 0}
+
+                                                                                        .head {
+                                                                                            display:flex;
+                                                                                            justify-content:space-between;
+                                                                                            align-items:end;
+                                                                                            gap:30px;
+                                                                                            margin-bottom:30px}
+
+                                                                                            .kicker {
+                                                                                                text-transform:uppercase;
+                                                                                                letter-spacing:.16em;
+                                                                                                font-size:11px;
+                                                                                                color:#6f747d;
+                                                                                                margin-bottom:8px}
+
+                                                                                                .head h2 {
+                                                                                                    margin:0;
+                                                                                                    font-size:clamp(32px,4vw,50px);
+                                                                                                    line-height:1.05;
+                                                                                                    letter-spacing:-.06em}
+
+                                                                                                    .head p {
+                                                                                                        max-width:430px;
+                                                                                                        color:var(--muted);
+                                                                                                        font-size:14px;
+                                                                                                        margin:0}
+
+                                                                                                        .feature {
+                                                                                                            display:grid;
+                                                                                                            grid-template-columns:1fr 1fr;
+                                                                                                            gap:18px}
+
+                                                                                                            .feature-card {
+                                                                                                                min-height:510px;
+                                                                                                                padding:40px;
+                                                                                                                border:1px solid var(--line);
+                                                                                                                border-radius:26px;
+                                                                                                                position:relative;
+                                                                                                                overflow:hidden;
+                                                                                                                background:radial-gradient(circle at 80% 20%,rgba(90,135,255,.2),transparent 32%),var(--card)}
+
+                                                                                                                .feature-card.vexo {
+                                                                                                                    background:radial-gradient(circle at 80% 20%,rgba(180,110,255,.2),transparent 32%),var(--card)}
+
+                                                                                                                    .label {
+                                                                                                                        font-size:11px;
+                                                                                                                        text-transform:uppercase;
+                                                                                                                        letter-spacing:.14em;
+                                                                                                                        color:#b8bdc6}
+
+                                                                                                                        .feature h3 {
+                                                                                                                            font-size:clamp(34px,4vw,54px);
+                                                                                                                            line-height:1;
+                                                                                                                            letter-spacing:-.065em;
+                                                                                                                            margin:15px 0}
+
+                                                                                                                            .feature p {
+                                                                                                                                max-width:510px;
+                                                                                                                                color:var(--muted);
+                                                                                                                                font-size:15px}
+
+                                                                                                                                .chips {
+                                                                                                                                    display:flex;
+                                                                                                                                    flex-wrap:wrap;
+                                                                                                                                    gap:7px;
+                                                                                                                                    margin:22px 0}
+
+                                                                                                                                    .chip {
+                                                                                                                                        font-size:10px;
+                                                                                                                                        color:#c8ccd3;
+                                                                                                                                        border:1px solid var(--line);
+                                                                                                                                        background:rgba(255,255,255,.035);
+                                                                                                                                        padding:5px 9px;
+                                                                                                                                        border-radius:999px}
+
+                                                                                                                                        .device {
+                                                                                                                                            position:absolute;
+                                                                                                                                            width:210px;
+                                                                                                                                            height:310px;
+                                                                                                                                            right:38px;
+                                                                                                                                            bottom:-75px;
+                                                                                                                                            border:6px solid #272a30;
+                                                                                                                                            border-radius:28px;
+                                                                                                                                            transform:rotate(7deg);
+                                                                                                                                            background:linear-gradient(160deg,#2a2e36,#0d0e11);
+                                                                                                                                            box-shadow:0 30px 80px rgba(0,0,0,.55)}
+
+                                                                                                                                            .device:before {
+                                                                                                                                                content:"Google Play screenshot";
+                                                                                                                                                position:absolute;
+                                                                                                                                                left:14px;
+                                                                                                                                                right:14px;
+                                                                                                                                                top:52px;
+                                                                                                                                                bottom:18px;
+                                                                                                                                                border-radius:16px;
+                                                                                                                                                background:repeating-linear-gradient(180deg,rgba(255,255,255,.08) 0 1px,transparent 1px 34px);
+                                                                                                                                                display:grid;
+                                                                                                                                                place-items:center;
+                                                                                                                                                color:#777d87;
+                                                                                                                                                font-size:10px}
+
+                                                                                                                                                .products {
+                                                                                                                                                    display:grid;
+                                                                                                                                                    grid-template-columns:repeat(3,1fr);
+                                                                                                                                                    gap:16px}
+
+                                                                                                                                                    .product {
+                                                                                                                                                        min-height:330px;
+                                                                                                                                                        padding:27px;
+                                                                                                                                                        border:1px solid var(--line);
+                                                                                                                                                        border-radius:22px;
+                                                                                                                                                        background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+                                                                                                                                                        display:flex;
+                                                                                                                                                        flex-direction:column;
+                                                                                                                                                        transition:.2s}
+
+                                                                                                                                                        .product:hover {
+                                                                                                                                                            transform:translateY(-4px);
+                                                                                                                                                            border-color:rgba(255,255,255,.18)}
+
+                                                                                                                                                            .icon {
+                                                                                                                                                                width:56px;
+                                                                                                                                                                height:56px;
+                                                                                                                                                                border-radius:16px;
+                                                                                                                                                                display:grid;
+                                                                                                                                                                place-items:center;
+                                                                                                                                                                background:linear-gradient(145deg,#292d35,#111216);
+                                                                                                                                                                border:1px solid var(--line);
+                                                                                                                                                                font-weight:700;
+                                                                                                                                                                font-size:18px;
+                                                                                                                                                                margin-bottom:22px}
+
+                                                                                                                                                                .product h3 {
+                                                                                                                                                                    margin:0;
+                                                                                                                                                                    font-size:23px;
+                                                                                                                                                                    letter-spacing:-.04em}
+
+                                                                                                                                                                    .sub {
+                                                                                                                                                                        font-size:12px;
+                                                                                                                                                                        color:#d2d5db;
+                                                                                                                                                                        margin:4px 0 12px}
+
+                                                                                                                                                                        .product p {
+                                                                                                                                                                            margin:0;
+                                                                                                                                                                            color:var(--muted);
+                                                                                                                                                                            font-size:13px}
+
+                                                                                                                                                                            .product .chips {
+                                                                                                                                                                                margin-top:18px}
+
+                                                                                                                                                                                .foot {
+                                                                                                                                                                                    margin-top:auto;
+                                                                                                                                                                                    padding-top:22px;
+                                                                                                                                                                                    display:flex;
+                                                                                                                                                                                    justify-content:space-between;
+                                                                                                                                                                                    align-items:center}
+
+                                                                                                                                                                                    .play {
+                                                                                                                                                                                        font-size:13px;
+                                                                                                                                                                                        font-weight:600}
+
+                                                                                                                                                                                        .play:after {
+                                                                                                                                                                                            content:" ↗";
+                                                                                                                                                                                            color:#777d87}
+
+                                                                                                                                                                                            .platforms {
+                                                                                                                                                                                                display:grid;
+                                                                                                                                                                                                grid-template-columns:repeat(3,1fr);
+                                                                                                                                                                                                gap:14px;
+                                                                                                                                                                                                margin-top:25px}
+
+                                                                                                                                                                                                .platform {
+                                                                                                                                                                                                    padding:24px;
+                                                                                                                                                                                                    border:1px solid var(--line);
+                                                                                                                                                                                                    border-radius:18px;
+                                                                                                                                                                                                    background:rgba(255,255,255,.025)}
+
+                                                                                                                                                                                                    .platform strong {
+                                                                                                                                                                                                        display:block;
+                                                                                                                                                                                                        font-size:18px}
+
+                                                                                                                                                                                                        .platform span {
+                                                                                                                                                                                                            font-size:12px;
+                                                                                                                                                                                                            color:var(--muted)}
+
+                                                                                                                                                                                                            .about {
+                                                                                                                                                                                                                display:grid;
+                                                                                                                                                                                                                grid-template-columns:1fr 1fr;
+                                                                                                                                                                                                                gap:80px}
+
+                                                                                                                                                                                                                .about h2 {
+                                                                                                                                                                                                                    font-size:clamp(34px,5vw,58px);
+                                                                                                                                                                                                                    line-height:1;
+                                                                                                                                                                                                                    letter-spacing:-.06em;
+                                                                                                                                                                                                                    margin:0}
+
+                                                                                                                                                                                                                    .about p {
+                                                                                                                                                                                                                        color:var(--muted)}
+
+                                                                                                                                                                                                                        .principle {
+                                                                                                                                                                                                                            padding:18px 0;
+                                                                                                                                                                                                                            border-bottom:1px solid var(--line)}
+
+                                                                                                                                                                                                                            .principle strong {
+                                                                                                                                                                                                                                display:block}
+
+                                                                                                                                                                                                                                .principle span {
+                                                                                                                                                                                                                                    color:var(--muted);
+                                                                                                                                                                                                                                    font-size:13px}
+
+                                                                                                                                                                                                                                    footer {
+                                                                                                                                                                                                                                        border-top:1px solid var(--line);
+                                                                                                                                                                                                                                        padding:30px 0 45px;
+                                                                                                                                                                                                                                        color:#6f747d;
+                                                                                                                                                                                                                                        font-size:12px}
+
+                                                                                                                                                                                                                                        .footer {
+                                                                                                                                                                                                                                            display:flex;
+                                                                                                                                                                                                                                            justify-content:space-between}
+
+                                                                                                                                                                                                                                            .footer strong {
+                                                                                                                                                                                                                                                color:#cdd1d7}
+
+                                                                                                                                                                                                                                                @media(max-width:800px) {
+                                                                                                                                                                                                                                                    .feature {
+                                                                                                                                                                                                                                                        grid-template-columns:1fr}
+
+                                                                                                                                                                                                                                                        .products {
+                                                                                                                                                                                                                                                            grid-template-columns:1fr 1fr}
+
+                                                                                                                                                                                                                                                            .about {
+                                                                                                                                                                                                                                                                grid-template-columns:1fr;
+                                                                                                                                                                                                                                                                gap:35px}
+
+                                                                                                                                                                                                                                                                .device {
+                                                                                                                                                                                                                                                                    width:170px;
+                                                                                                                                                                                                                                                                    height:250px}
+                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                @media(max-width:560px) {
+                                                                                                                                                                                                                                                                    .wrap {
+                                                                                                                                                                                                                                                                        width:min(calc(100% - 26px),var(--max))}
+
+                                                                                                                                                                                                                                                                        .links a:not(.pill) {
+                                                                                                                                                                                                                                                                            display:none}
+
+                                                                                                                                                                                                                                                                            .hero {
+                                                                                                                                                                                                                                                                                padding:90px 0 80px}
+
+                                                                                                                                                                                                                                                                                .hero h1 {
+                                                                                                                                                                                                                                                                                    font-size:50px}
+
+                                                                                                                                                                                                                                                                                    .hero p {
+                                                                                                                                                                                                                                                                                        font-size:16px}
+
+                                                                                                                                                                                                                                                                                        .head {
+                                                                                                                                                                                                                                                                                            display:block}
+
+                                                                                                                                                                                                                                                                                            .head p {
+                                                                                                                                                                                                                                                                                                margin-top:13px}
+
+                                                                                                                                                                                                                                                                                                .feature-card {
+                                                                                                                                                                                                                                                                                                    padding:28px;
+                                                                                                                                                                                                                                                                                                    min-height:560px}
+
+                                                                                                                                                                                                                                                                                                    .products,.platforms {
+                                                                                                                                                                                                                                                                                                        grid-template-columns:1fr}
+
+                                                                                                                                                                                                                                                                                                        .footer {
+                                                                                                                                                                                                                                                                                                            display:block}
+
+                                                                                                                                                                                                                                                                                                            .footer span {
+                                                                                                                                                                                                                                                                                                                display:block;
+                                                                                                                                                                                                                                                                                                                margin-top:8px}
+                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                            .product-heading {
+                                                                                                                                                                                                                                                                                                                display:flex;
+                                                                                                                                                                                                                                                                                                                align-items:center;
+                                                                                                                                                                                                                                                                                                                gap:14px;
+                                                                                                                                                                                                                                                                                                                margin-bottom:18px}
+
+                                                                                                                                                                                                                                                                                                                .product-heading .label {
+                                                                                                                                                                                                                                                                                                                    margin:0}
+
+                                                                                                                                                                                                                                                                                                                    .app-icon {
+                                                                                                                                                                                                                                                                                                                        width:58px;
+                                                                                                                                                                                                                                                                                                                        height:58px;
+                                                                                                                                                                                                                                                                                                                        flex:none;
+                                                                                                                                                                                                                                                                                                                        border-radius:16px;
+                                                                                                                                                                                                                                                                                                                        overflow:hidden;
+                                                                                                                                                                                                                                                                                                                        border:1px solid var(--line);
+                                                                                                                                                                                                                                                                                                                        background:#181a20;
+                                                                                                                                                                                                                                                                                                                        display:grid;
+                                                                                                                                                                                                                                                                                                                        place-items:center;
+                                                                                                                                                                                                                                                                                                                        position:relative;
+                                                                                                                                                                                                                                                                                                                        box-shadow:0 10px 30px rgba(0,0,0,.25)}
+
+                                                                                                                                                                                                                                                                                                                        .app-icon img {
+                                                                                                                                                                                                                                                                                                                            width:100%;
+                                                                                                                                                                                                                                                                                                                            height:100%;
+                                                                                                                                                                                                                                                                                                                            object-fit:cover}
+
+                                                                                                                                                                                                                                                                                                                            .app-icon span {
+                                                                                                                                                                                                                                                                                                                                display:none;
+                                                                                                                                                                                                                                                                                                                                font-weight:800;
+                                                                                                                                                                                                                                                                                                                                font-size:18px}
+
+                                                                                                                                                                                                                                                                                                                                .app-icon.fallback img {
+                                                                                                                                                                                                                                                                                                                                    display:none}
+
+                                                                                                                                                                                                                                                                                                                                    .app-icon.fallback span {
+                                                                                                                                                                                                                                                                                                                                        display:block}
+
+                                                                                                                                                                                                                                                                                                                                        .icon {
+                                                                                                                                                                                                                                                                                                                                            overflow:hidden}
+
+                                                                                                                                                                                                                                                                                                                                            .icon img {
+                                                                                                                                                                                                                                                                                                                                                width:100%;
+                                                                                                                                                                                                                                                                                                                                                height:100%;
+                                                                                                                                                                                                                                                                                                                                                object-fit:cover;
+                                                                                                                                                                                                                                                                                                                                                border-radius:inherit}
+
+                                                                                                                                                                                                                                                                                                                                                .device {
+                                                                                                                                                                                                                                                                                                                                                    overflow:hidden;
+                                                                                                                                                                                                                                                                                                                                                    z-index:1}
+
+                                                                                                                                                                                                                                                                                                                                                    .device:before {
+                                                                                                                                                                                                                                                                                                                                                        display:none}
+
+                                                                                                                                                                                                                                                                                                                                                        .device img {
+                                                                                                                                                                                                                                                                                                                                                            width:100%;
+                                                                                                                                                                                                                                                                                                                                                            height:100%;
+                                                                                                                                                                                                                                                                                                                                                            object-fit:cover;
+                                                                                                                                                                                                                                                                                                                                                            display:block}
+
+                                                                                                                                                                                                                                                                                                                                                            .cast-device {
+                                                                                                                                                                                                                                                                                                                                                                width:330px;
+                                                                                                                                                                                                                                                                                                                                                                height:185px;
+                                                                                                                                                                                                                                                                                                                                                                right:28px;
+                                                                                                                                                                                                                                                                                                                                                                bottom:20px;
+                                                                                                                                                                                                                                                                                                                                                                border:1px solid var(--line);
+                                                                                                                                                                                                                                                                                                                                                                border-radius:18px;
+                                                                                                                                                                                                                                                                                                                                                                transform:none;
+                                                                                                                                                                                                                                                                                                                                                                background:#0b0d11}
+
+                                                                                                                                                                                                                                                                                                                                                                .vexo-device {
+                                                                                                                                                                                                                                                                                                                                                                    width:145px;
+                                                                                                                                                                                                                                                                                                                                                                    height:258px;
+                                                                                                                                                                                                                                                                                                                                                                    right:38px;
+                                                                                                                                                                                                                                                                                                                                                                    bottom:18px;
+                                                                                                                                                                                                                                                                                                                                                                    border:6px solid #272a30;
+                                                                                                                                                                                                                                                                                                                                                                    border-radius:26px;
+                                                                                                                                                                                                                                                                                                                                                                    transform:rotate(5deg);
+                                                                                                                                                                                                                                                                                                                                                                    background:#111}
+
+                                                                                                                                                                                                                                                                                                                                                                    .vexo-device img {
+                                                                                                                                                                                                                                                                                                                                                                        object-fit:cover;
+                                                                                                                                                                                                                                                                                                                                                                        border-radius:18px}
+
+                                                                                                                                                                                                                                                                                                                                                                        .feature-card .btn {
+                                                                                                                                                                                                                                                                                                                                                                            position:relative;
+                                                                                                                                                                                                                                                                                                                                                                            z-index:3}
+
+                                                                                                                                                                                                                                                                                                                                                                            @media(max-width:800px) {
+                                                                                                                                                                                                                                                                                                                                                                                .cast-device {
+                                                                                                                                                                                                                                                                                                                                                                                    width:280px;
+                                                                                                                                                                                                                                                                                                                                                                                    height:157px}
+
+                                                                                                                                                                                                                                                                                                                                                                                    .vexo-device {
+                                                                                                                                                                                                                                                                                                                                                                                        width:125px;
+                                                                                                                                                                                                                                                                                                                                                                                        height:225px}
+                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                    @media(max-width:560px) {
+                                                                                                                                                                                                                                                                                                                                                                                        .cast-device {
+                                                                                                                                                                                                                                                                                                                                                                                            left:28px;
+                                                                                                                                                                                                                                                                                                                                                                                            right:28px;
+                                                                                                                                                                                                                                                                                                                                                                                            width:auto;
+                                                                                                                                                                                                                                                                                                                                                                                            height:145px;
+                                                                                                                                                                                                                                                                                                                                                                                            bottom:20px}
+
+                                                                                                                                                                                                                                                                                                                                                                                            .vexo-device {
+                                                                                                                                                                                                                                                                                                                                                                                                width:115px;
+                                                                                                                                                                                                                                                                                                                                                                                                height:205px;
+                                                                                                                                                                                                                                                                                                                                                                                                right:22px;
+                                                                                                                                                                                                                                                                                                                                                                                                bottom:20px}
+
+                                                                                                                                                                                                                                                                                                                                                                                                .product-heading {
+                                                                                                                                                                                                                                                                                                                                                                                                    gap:12px}
+                                                                                                                                                                                                                                                                                                                                                                                                }
 </style>
+
 </head>
+
 <body>
-<nav><div class="wrap nav"><a class="logo" href="/">LEOX <span>STUDIO</span></a><div class="links"><a href="#apps">Apps</a><a href="#about">About</a><a class="pill" href="#apps">Explore Apps</a></div></div></nav>
+
+<nav>
+
+<div class="wrap nav"><a class="logo" href="/">LEOX <span>STUDIO</span></a><div class="links"><a href="#apps">Apps</a><a href="#about">About</a><a class="pill" href="#apps">Explore Apps</a></div></div>
+</nav>
+
 <main>
-<section class="hero"><div class="wrap"><div class="eyebrow">Independent Software Studio</div><h1>Software that makes everyday life simpler.</h1><p>Leox Studio creates practical software for media, creativity and everyday digital experiences — from AI-powered video tools to wireless casting and audio editing.</p><div class="buttons"><a class="btn primary" href="#apps">Explore Apps</a><a class="btn" href="https://play.google.com/store/apps/developer?id=LLTech" target="_blank" rel="noopener">Google Play ↗</a></div></div></section>
-<section id="apps"><div class="wrap"><div class="head"><div><div class="kicker">Featured work</div><h2>Built for real-world use.</h2></div><p>Focused products for casting, video, subtitles and audio — with more software coming across platforms.</p></div>
+
+<section class="hero">
+<div class="wrap"><div class="eyebrow">Independent Software Studio</div><h1>Software that makes everyday life simpler.</h1><p>Leox Studio creates practical software for media, creativity and everyday digital experiences — from AI-powered video tools to wireless casting and audio editing.</p><div class="buttons">
+<a class="btn primary" href="#apps">Explore Apps</a>
+<a class="btn" href="https://play.google.com/store/apps/developer?id=LLTech" target="_blank" rel="noopener">Google Play ↗</a></div></div>
+</section>
+
+<section id="apps">
+<div class="wrap"><div class="head"><div><div class="kicker">Featured work</div><h2>Built for real-world use.</h2></div><p>Focused products for casting, video, subtitles and audio — with more software coming across platforms.</p></div>
+
 <div class="feature">
-<article class="feature-card"><div class="label">Featured · 100K+ downloads</div><h3>Cast Receiver<br>— DLNA & AirPlay</h3><p>Turn an Android device into a powerful media receiver. Cast videos, music and photos from phones, tablets and computers with DLNA and AirPlay.</p><div class="chips"><span class="chip">DLNA Receiver</span><span class="chip">AirPlay Receiver</span><span class="chip">Cast to TV</span><span class="chip">Android TV</span></div><a class="btn primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" target="_blank" rel="noopener">Get it on Google Play ↗</a><div class="device" aria-hidden="true"></div></article>
-<article class="feature-card vexo"><div class="label">Featured · AI video tools</div><h3>Vexo<br>— AI Subtitle Editor</h3><p>Generate subtitles automatically, translate captions, edit videos, compress media and convert formats in one streamlined video toolkit.</p><div class="chips"><span class="chip">AI Subtitles</span><span class="chip">Auto Captions</span><span class="chip">Subtitle Translation</span><span class="chip">Video Editor</span></div><a class="btn primary" href="https://play.google.com/store/apps/details?id=com.aicareles.vexo" target="_blank" rel="noopener">Get it on Google Play ↗</a><div class="device" aria-hidden="true"></div></article>
+
+<article class="feature-card"><div class="product-heading"><div class="app-icon">
+<img src="/cast-receiver/icon.png" alt="Cast Receiver icon" onerror="this.parentElement.classList.add('fallback')"><span>CR</span></div><div class="label">Featured · 100K+ downloads</div></div><h3>Cast Receiver<br>— DLNA & AirPlay</h3><p>Turn an Android device into a powerful media receiver. Cast videos, music and photos from phones, tablets and computers with DLNA and AirPlay.</p><div class="chips"><span class="chip">DLNA Receiver</span><span class="chip">AirPlay Receiver</span><span class="chip">Cast to TV</span><span class="chip">Android TV</span></div>
+<a class="btn primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" target="_blank" rel="noopener">Get it on Google Play ↗</a><div class="device cast-device">
+<img src="/cast-receiver/screenshots/feature-graphic.png" alt="Cast Receiver feature graphic" loading="lazy"></div>
+</article>
+
+<article class="feature-card vexo"><div class="product-heading"><div class="app-icon">
+<img src="/vexo/icon.png" alt="Vexo icon" onerror="this.parentElement.classList.add('fallback')"><span>V</span></div><div class="label">Featured · AI video tools</div></div><h3>Vexo<br>— AI Subtitle Editor</h3><p>Generate subtitles automatically, translate captions, edit videos, compress media and convert formats in one streamlined video toolkit.</p><div class="chips"><span class="chip">AI Subtitles</span><span class="chip">Auto Captions</span><span class="chip">Subtitle Translation</span><span class="chip">Video Editor</span></div>
+<a class="btn primary" href="https://play.google.com/store/apps/details?id=com.aicareles.vexo" target="_blank" rel="noopener">Get it on Google Play ↗</a><div class="device vexo-device">
+<img src="/vexo/screenshots/1.png" alt="Vexo AI Subtitle Editor screenshot" loading="lazy"></div>
+</article>
 </div>
 <div class="head" style="margin-top:82px"><div><div class="kicker">More products</div><h2>Tools for media workflows.</h2></div></div>
+
 <div class="products">
-<article class="product"><div class="icon">A</div><h3>AudioX</h3><div class="sub">Audio Editor & AI</div><p>Cut, merge, convert and compress audio, reduce noise, remove vocals and create AI-generated speech.</p><div class="chips"><span class="chip">Audio Editor</span><span class="chip">AI Audio</span><span class="chip">Vocal Remover</span></div><div class="foot"><span class="play">Google Play</span><a class="btn" href="https://play.google.com/store/apps/details?id=com.aicareles.audiobox" target="_blank" rel="noopener">View App</a></div></article>
-<article class="product"><div class="icon">AP</div><h3>AirPlay Receiver</h3><div class="sub">Wireless AirPlay for Android</div><p>Turn Android phones, tablets and TVs into AirPlay receivers for iPhone, iPad and Mac.</p><div class="chips"><span class="chip">AirPlay</span><span class="chip">Screen Mirroring</span><span class="chip">Mac Display</span></div><div class="foot"><span class="play">Google Play</span><a class="btn" href="https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver" target="_blank" rel="noopener">View App</a></div></article>
-<article class="product"><div class="icon">TV</div><h3>Screen Cast</h3><div class="sub">Mirror to TV</div><p>Cast videos, photos, music and documents to TVs with DLNA, Chromecast and screen mirroring.</p><div class="chips"><span class="chip">Cast to TV</span><span class="chip">DLNA</span><span class="chip">Chromecast</span></div><div class="foot"><span class="play">Google Play</span><a class="btn" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaclient" target="_blank" rel="noopener">View App</a></div></article>
-</div></div></section>
-<section><div class="wrap"><div class="kicker">Platforms</div><h2>Built beyond one platform.</h2><div class="platforms"><div class="platform"><strong>Android</strong><span>Current products and media utilities</span></div><div class="platform"><strong>iOS</strong><span>Selected products coming soon</span></div><div class="platform"><strong>macOS</strong><span>Desktop tools in development</span></div></div></div></section>
-<section id="about"><div class="wrap about"><div><div class="kicker">About Leox Studio</div><h2>Small studio.<br>Useful software.</h2></div><div><p>Leox Studio is an independent software studio focused on building useful, focused products for media, creativity, productivity and everyday digital experiences.</p><div class="principle"><strong>Focused products</strong><span>Each app is built around a clear problem instead of unnecessary complexity.</span></div><div class="principle"><strong>Practical AI</strong><span>AI is used where it makes a real workflow faster or easier.</span></div><div class="principle"><strong>Privacy conscious</strong><span>Local-first processing is preferred whenever it makes sense.</span></div></div></div></section>
-</main><footer><div class="wrap footer"><strong>LEOX STUDIO</strong><span>© 2026 Leox Studio. All rights reserved.</span></div></footer>
-</body></html>
+
+<article class="product"><div class="icon">
+<img src="/audioeditor/icon.png" alt="AudioX icon"><span>A</span></div><h3>AudioX</h3><div class="sub">Audio Editor & AI</div><p>Cut, merge, convert and compress audio, reduce noise, remove vocals and create AI-generated speech.</p><div class="chips"><span class="chip">Audio Editor</span><span class="chip">AI Audio</span><span class="chip">Vocal Remover</span></div><div class="foot"><span class="play">Google Play</span>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.aicareles.audiobox" target="_blank" rel="noopener">View App</a></div>
+</article>
+
+<article class="product"><div class="icon">
+<img src="/airplay/icon.png" alt="AirPlay Receiver icon"><span>AP</span></div><h3>AirPlay Receiver</h3><div class="sub">Wireless AirPlay for Android</div><p>Turn Android phones, tablets and TVs into AirPlay receivers for iPhone, iPad and Mac.</p><div class="chips"><span class="chip">AirPlay</span><span class="chip">Screen Mirroring</span><span class="chip">Mac Display</span></div><div class="foot"><span class="play">Google Play</span>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver" target="_blank" rel="noopener">View App</a></div>
+</article>
+
+<article class="product"><div class="icon">
+<img src="/screencast/icon.png" alt="Screen Cast icon"><span>TV</span></div><h3>Screen Cast</h3><div class="sub">Mirror to TV</div><p>Cast videos, photos, music and documents to TVs with DLNA, Chromecast and screen mirroring.</p><div class="chips"><span class="chip">Cast to TV</span><span class="chip">DLNA</span><span class="chip">Chromecast</span></div><div class="foot"><span class="play">Google Play</span>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaclient" target="_blank" rel="noopener">View App</a></div>
+</article>
+</div></div>
+</section>
+<section>
+<div class="wrap"><div class="kicker">Platforms</div><h2>Built beyond one platform.</h2><div class="platforms"><div class="platform"><strong>Android</strong><span>Current products and media utilities</span></div><div class="platform"><strong>iOS</strong><span>Selected products coming soon</span></div><div class="platform"><strong>macOS</strong><span>Desktop tools in development</span></div></div></div>
+</section>
+
+<section id="about">
+<div class="wrap about"><div><div class="kicker">About Leox Studio</div><h2>Small studio.<br>Useful software.</h2></div><div><p>Leox Studio is an independent software studio focused on building useful, focused products for media, creativity, productivity and everyday digital experiences.</p><div class="principle"><strong>Focused products</strong><span>Each app is built around a clear problem instead of unnecessary complexity.</span></div><div class="principle"><strong>Practical AI</strong><span>AI is used where it makes a real workflow faster or easier.</span></div><div class="principle"><strong>Privacy conscious</strong><span>Local-first processing is preferred whenever it makes sense.</span></div></div></div>
+</section>
+
+</main>
+
+<footer>
+
+<div class="wrap footer"><strong>LEOX STUDIO</strong><span>© 2026 Leox Studio. All rights reserved.</span></div>
+</footer>
+
+</body>
+</html>
