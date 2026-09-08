@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Stash — AI Save & Search</title>
+
+  <meta
+    name="description"
+    content="Save anything. AI organizes everything. Find what matters with Stash."
+  />
+
+  <style>
+    :root {
+      --text: #1d1d1f;
+      --secondary: #6e6e73;
+      --blue: #0071e3;
+      --blue-hover: #0077ed;
+      --background: #ffffff;
+      --soft-bg: #f5f5f7;
+      --card: #ffffff;
+      --border: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      background: var(--background);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Navigation */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-container {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+
+    .hero {
+      text-align: center;
+      padding: 110px 20px 100px;
+    }
+
+    .hero-eyebrow {
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 84px);
+      line-height: 1.05;
+      letter-spacing: -4px;
+      font-weight: 700;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(21px, 3vw, 28px);
+      line-height: 1.35;
+      color: var(--secondary);
+      max-width: 680px;
+      margin: 26px auto 34px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 980px;
+      font-size: 17px;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--blue-hover);
+    }
+
+    .button-secondary {
+      color: var(--blue);
+    }
+
+    .button-secondary:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero visual */
+
+    .hero-visual {
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto 100px;
+      padding: 14px;
+      border-radius: 34px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0, 113, 227, 0.12),
+          rgba(175, 82, 222, 0.1),
+          rgba(255, 159, 10, 0.1)
+        );
+    }
+
+    .stash-preview {
+      min-height: 480px;
+      border-radius: 26px;
+      background: #fbfbfd;
+      padding: 40px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 36px;
+    }
+
+    .preview-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+    }
+
+    .search-box {
+      width: 260px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      background: white;
+      border: 1px solid var(--border);
+      color: #86868b;
+      font-size: 14px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .preview-card {
+      min-height: 180px;
+      background: white;
+      border-radius: 22px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease;
+    }
+
+    .preview-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-size: 23px;
+      background: var(--soft-bg);
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-top: 7px;
+      line-height: 1.4;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 110px 20px;
+    }
+
+    .section-dark {
+      background: var(--text);
+      color: white;
+    }
+
+    .container {
+      width: min(980px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(38px, 6vw, 56px);
+      letter-spacing: -2.5px;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      max-width: 620px;
+      margin: 20px auto 0;
+      color: var(--secondary);
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .section-dark .section-heading p {
+      color: #a1a1a6;
+    }
+
+    /* Feature cards */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .feature {
+      background: var(--soft-bg);
+      border-radius: 28px;
+      padding: 42px;
+      min-height: 280px;
+    }
+
+    .feature-icon {
+      font-size: 34px;
+      margin-bottom: 28px;
+    }
+
+    .feature h3 {
+      font-size: 28px;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .feature p {
+      color: var(--secondary);
+      font-size: 17px;
+      line-height: 1.5;
+      max-width: 400px;
+    }
+
+    /* Steps */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .step {
+      padding: 12px 10px;
+    }
+
+    .step-number {
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      font-size: 28px;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      color: var(--secondary);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    /* Privacy */
+
+    .privacy-message {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .privacy-icon {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .privacy-message h2 {
+      font-size: clamp(40px, 6vw, 60px);
+      letter-spacing: -2.5px;
+      line-height: 1.1;
+    }
+
+    .privacy-message p {
+      color: #a1a1a6;
+      font-size: 21px;
+      line-height: 1.5;
+      margin: 22px auto;
+      max-width: 650px;
+    }
+
+    .privacy-link {
+      color: #2997ff;
+      font-size: 17px;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      background: var(--soft-bg);
+    }
+
+    .cta h2 {
+      font-size: clamp(42px, 6vw, 64px);
+      letter-spacing: -2.8px;
+    }
+
+    .cta p {
+      color: var(--secondary);
+      font-size: 21px;
+      margin: 18px 0 30px;
+    }
+
+    /* Footer */
+
+    footer {
+      background: var(--soft-bg);
+      border-top: 1px solid var(--border);
+      padding: 28px 20px;
+    }
+
+    .footer-container {
+      width: min(980px, 100%);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--secondary);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 700px) {
+      .nav-links a:not(:last-child) {
+        display: none;
+      }
+
+      .hero {
+        padding: 80px 20px 70px;
+      }
+
+      h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .stash-preview {
+        padding: 24px;
+        min-height: auto;
+      }
+
+      .preview-header {
+        display: block;
+      }
+
+      .search-box {
+        margin-top: 18px;
+        width: 100%;
+      }
+
+      .preview-grid,
+      .features,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
+
+      .feature {
+        padding: 32px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Stash</a>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+
+    <!-- Hero -->
+
+    <section class="hero">
+      <div class="hero-eyebrow">Stash: AI Save & Search</div>
+
+      <h1>
+        Save anything.<br />
+        Find everything.
+      </h1>
+
+      <p class="hero-subtitle">
+        Your personal space for links, images, videos, documents and more.
+        AI helps organize what matters and makes it easy to find again.
+      </p>
+
+      <div class="hero-actions">
+        <!-- Replace # with your App Store URL -->
+        <a href="#" class="button button-primary">
+          Download Stash
+        </a>
+
+        <a href="#features" class="button button-secondary">
+          Learn more →
+        </a>
+      </div>
+    </section>
+
+
+    <!-- Product Preview -->
+
+    <div class="hero-visual">
+      <div class="stash-preview">
+
+        <div class="preview-header">
+          <div class="preview-title">Everything you save.</div>
+
+          <div class="search-box">
+            🔍 Search anything you've saved
+          </div>
+        </div>
+
+        <div class="preview-grid">
+
+          <div class="preview-card">
+            <div class="card-icon">🔗</div>
+
+            <div>
+              <div class="card-title">Links</div>
+              <div class="card-text">
+                Save articles, websites and ideas from anywhere.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="preview-card">
+            <div class="card-icon">🖼️</div>
+
+            <div>
+              <div class="card-title">Images</div>
+              <div class="card-text">
+                Keep inspiration and important visuals together.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="preview-card">
+            <div class="card-icon">📄</div>
+
+            <div>
+              <div class="card-title">Files</div>
+              <div class="card-text">
+                PDFs, documents, audio, video and more.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Features -->
+
+    <section id="features">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Everything belongs together.</h2>
+
+          <p>
+            Stash brings the things you save across different apps into one
+            simple, searchable place.
+          </p>
+        </div>
+
+
+        <div class="features">
+
+          <div class="feature">
+            <div class="feature-icon">📥</div>
+
+            <h3>Save anything.</h3>
+
+            <p>
+              Save links, images, videos, audio, PDFs, documents and more.
+              Capture content from almost any app using the share feature.
+            </p>
+          </div>
+
+
+          <div class="feature">
+            <div class="feature-icon">✨</div>
+
+            <h3>AI organizes.</h3>
+
+            <p>
+              Let AI automatically categorize your saved content and help turn
+              scattered information into an organized collection.
+            </p>
+          </div>
+
+
+          <div class="feature">
+            <div class="feature-icon">🔎</div>
+
+            <h3>Search naturally.</h3>
+
+            <p>
+              Find what you need with intelligent search. Rediscover things
+              you saved without remembering the exact words.
+            </p>
+          </div>
+
+
+          <div class="feature">
+            <div class="feature-icon">🏷️</div>
+
+            <h3>Make it yours.</h3>
+
+            <p>
+              Create custom tags and organize your collection in the way that
+              works best for you.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- How it works -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Save. Organize. Find.</h2>
+
+          <p>
+            A simpler way to keep track of the things worth remembering.
+          </p>
+        </div>
+
+
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-number">01</div>
+
+            <h3>Save</h3>
+
+            <p>
+              Share anything you want to keep with Stash.
+            </p>
+          </div>
+
+
+          <div class="step">
+            <div class="step-number">02</div>
+
+            <h3>Organize</h3>
+
+            <p>
+              AI helps categorize and organize your saved content.
+            </p>
+          </div>
+
+
+          <div class="step">
+            <div class="step-number">03</div>
+
+            <h3>Find</h3>
+
+            <p>
+              Search your collection and quickly rediscover what matters.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Privacy -->
+
+    <section id="privacy" class="section-dark">
+
+      <div class="container">
+
+        <div class="privacy-message">
+
+          <div class="privacy-icon">🔒</div>
+
+          <h2>Your privacy stays yours.</h2>
+
+          <p>
+            Stash has no ads, no in-app purchases and no user data collection.
+            Your privacy isn't a product.
+          </p>
+
+          <a href="privacy.html" class="privacy-link">
+            Read our Privacy Policy →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <h2>Keep what matters.</h2>
+
+        <p>
+          Save anything today. Find it whenever you need it.
+        </p>
+
+        <!-- Replace # with your App Store URL -->
+        <a href="#" class="button button-primary">
+          Download Stash
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div>
+        © 2026 Stash. All rights reserved.
+      </div>
+
+      <div class="footer-links">
+        <a href="privacy_policy.html">Privacy Policy</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
