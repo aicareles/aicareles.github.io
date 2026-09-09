@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>休闲小游戏厅</title>
+<meta name="description" content="Small games for small breaks.">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#08090d;color:#f5f7fb;font-family:Inter,system-ui,-apple-system,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}.top{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:-.04em}.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#ffcf55,#ff8b3d);display:grid;place-items:center;color:#111;box-shadow:0 0 28px #ffb23d33}.live{font-size:11px;color:#8e96a8}.live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#49e39a;box-shadow:0 0 10px #49e39a;margin-right:7px}
+.hero{text-align:center;padding:72px 0 55px}.pill{display:inline-block;border:1px solid #ffffff14;background:#ffffff08;border-radius:999px;padding:7px 11px;color:#aeb5c4;font-size:11px;margin-bottom:20px}.pill b{color:#ffcf55}
+h1{font-size:clamp(44px,8vw,78px);line-height:.98;letter-spacing:-.065em;margin:0}h1 em{font-style:normal;color:#ffcf55}.hero p{max-width:560px;margin:22px auto;color:#8e96a8;line-height:1.7;font-size:15px}.line{height:1px;max-width:520px;margin:34px auto 0;background:linear-gradient(90deg,transparent,#7c5cff,#ffcf55,transparent);opacity:.55}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.title{font-size:21px;font-weight:750}.count{font-size:11px;color:#697184}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:60px}.card{overflow:hidden;border:1px solid #ffffff10;border-radius:20px;background:linear-gradient(145deg,#ffffff09,#ffffff02);cursor:pointer;transition:.22s}.card:hover{transform:translateY(-4px);border-color:#ffcf5545;box-shadow:0 20px 55px #0008}
+.thumb{height:190px;position:relative;background:radial-gradient(circle at 50% 45%,#ffcf5522,transparent 28%),linear-gradient(135deg,#17130d,#171a26);overflow:hidden}.badge{position:absolute;top:12px;left:12px;z-index:3;padding:6px 9px;border-radius:8px;background:#0008;border:1px solid #ffffff10;font-size:10px}.road{position:absolute;left:24%;right:24%;top:-20%;bottom:-20%;background:#252936;border-left:2px dashed #ffffff20;border-right:2px dashed #ffffff20;transform:perspective(240px) rotateX(12deg)}.car{position:absolute;width:44px;height:74px;left:calc(50% - 22px);bottom:30px;border-radius:12px 12px 9px 9px;background:linear-gradient(#ffcf58,#ff8d3b);box-shadow:0 0 28px #ffae4538;z-index:2}.car:after{content:"";position:absolute;left:7px;right:7px;top:10px;height:22px;border-radius:7px;background:#282d3b}
+.body{padding:17px}.name{font-size:17px;font-weight:750}.desc{font-size:12px;color:#8e96a8;line-height:1.6;margin-top:6px;min-height:38px}.foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}.meta{font-size:10px;color:#697184}.play{font-size:12px;font-weight:750;color:#111;background:#ffcf55;border-radius:10px;padding:9px 13px}
+footer{border-top:1px solid #ffffff0d;text-align:center;padding:24px 0 38px;color:#626a7a;font-size:10px}
+.overlay{position:fixed;inset:0;z-index:10;background:#020306cc;backdrop-filter:blur(12px);display:none;padding:18px}.overlay.open{display:flex}.modal{width:min(1100px,100%);height:min(820px,100%);margin:auto;background:#0d0f15;border:1px solid #ffffff18;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 100px #000b}.mh{height:58px;flex:none;padding:0 14px 0 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff0d}.close{border:0;width:34px;height:34px;border-radius:9px;background:#ffffff0a;color:#fff;font-size:18px;cursor:pointer}iframe{border:0;width:100%;height:100%;background:#08090d}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{padding-top:48px}.live{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="logo"><div class="mark">✦</div><span>PIXEL ARCADE</span></div><div class="live"><i></i>OPEN · PLAY ANYTIME</div></header>
+<section class="hero"><div class="pill">🎮 <b>QUICK PLAY</b> · 适合摸鱼间隙的一局</div><h1>Take a break.<br><em>Play a game.</em></h1><p>不用注册，不用学习。挑一个喜欢的小游戏，随时开始，玩完随时离开。</p><div class="line"></div></section>
+<section><div class="head"><div class="title">Game Floor</div><div class="count" id="count"></div></div><div class="grid" id="grid"></div></section>
+<footer>PIXEL ARCADE · Small games for small breaks.</footer>
+</div>
+<div class="overlay" id="overlay"><div class="modal"><div class="mh"><b id="mtitle">Game</b><button class="close" id="close">×</button></div><iframe id="frame"></iframe></div></div>
+<script>
+const GAMES=[
+ {title:"Tiny Racer",desc:"左右躲避车辆，速度越来越快。看看你能跑多远。",file:"/tiny-racer.html",tag:"ARCADE",meta:"← → ONLY"}
+];
+const grid=document.querySelector("#grid"),count=document.querySelector("#count");
+count.textContent=GAMES.length+" "+(GAMES.length===1?"GAME":"GAMES")+" AVAILABLE";
+grid.innerHTML=GAMES.map((g,i)=>`<article class="card" data-i="${i}"><div class="thumb"><span class="badge">${g.tag}</span><div class="road"></div><div class="car"></div></div><div class="body"><div class="name">${g.title}</div><div class="desc">${g.desc}</div><div class="foot"><span class="meta">${g.meta}</span><span class="play">PLAY →</span></div></div></article>`).join("");
+const overlay=document.querySelector("#overlay"),frame=document.querySelector("#frame"),mtitle=document.querySelector("#mtitle");
+grid.onclick=e=>{let c=e.target.closest(".card");if(!c)return;let g=GAMES[c.dataset.i];mtitle.textContent=g.title;frame.src=g.file;overlay.classList.add("open");document.body.style.overflow="hidden"};
+function close(){overlay.classList.remove("open");frame.src="about:blank";document.body.style.overflow=""}
+document.querySelector("#close").onclick=close;overlay.onclick=e=>{if(e.target===overlay)close()};document.onkeydown=e=>{if(e.key==="Escape")close()};
+</script>
+</body></html>
