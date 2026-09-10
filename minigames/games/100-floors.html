@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>是男人下100层</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Microsoft YaHei", sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+  .game-wrap {
+    position: relative;
+    width: 420px;
+    height: 640px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,255,255,0.08);
+    background: #0b1020;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(10, 14, 30, 0.82);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.3s;
+  }
+  .overlay.hidden { opacity: 0; pointer-events: none; }
+  .title {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 20px rgba(255,107,107,0.3);
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #aab;
+    margin-bottom: 28px;
+    line-height: 1.8;
+  }
+  .stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 28px;
+  }
+  .stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 14px 22px;
+    border-radius: 12px;
+    min-width: 110px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: #889;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .stat-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: #feca57;
+  }
+  .btn {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow: 0 8px 20px rgba(238,90,111,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(238,90,111,0.55); }
+  .btn:active { transform: translateY(0); }
+  .tip {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #667;
+  }
+  .hud {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .hud-item {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+  }
+  .hud-item span { color: #feca57; }
+  .result-title {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+  .result-title.win { color: #48dbfb; text-shadow: 0 0 20px rgba(72,219,251,0.5); }
+  .result-title.lose { color: #ff6b6b; text-shadow: 0 0 20px rgba(255,107,107,0.5); }
+</style>
+</head>
+<body>
+<div class="game-wrap">
+  <canvas id="game" width="420" height="640"></canvas>
+
+  <div class="hud" id="hud" style="display:none;">
+    <div class="hud-item">层数 <span id="hudFloor">0</span>/100</div>
+    <div class="hud-item">速度 <span id="hudSpeed">1.0</span>x</div>
+    <div class="hud-item">最高 <span id="hudBest">0</span></div>
+  </div>
+
+  <!-- 开始界面 -->
+  <div class="overlay" id="menuScreen">
+    <div class="title">是男人下100层</div>
+    <div class="subtitle">
+      方向键 ← → 或 A / D 移动<br>
+      踩住平台，避开尖刺，挑战100层！
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">最高层数</div>
+        <div class="stat-value" id="menuBest">0</div>
+      </div>
+    </div>
+    <button class="btn" id="startBtn">开始挑战</button>
+    <div class="tip">被顶出屏幕顶部 = 失败</div>
+  </div>
+
+  <!-- 结束界面 -->
+  <div class="overlay hidden" id="endScreen">
+    <div class="result-title" id="resultTitle">挑战失败</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">本次层数</div>
+        <div class="stat-value" id="endFloor">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">最高层数</div>
+        <div class="stat-value" id="endBest">0</div>
+      </div>
+    </div>
+    <button class="btn" id="retryBtn">再来一次</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  const menuScreen = document.getElementById('menuScreen');
+  const endScreen = document.getElementById('endScreen');
+  const hud = document.getElementById('hud');
+  const hudFloor = document.getElementById('hudFloor');
+  const hudSpeed = document.getElementById('hudSpeed');
+  const hudBest = document.getElementById('hudBest');
+  const menuBest = document.getElementById('menuBest');
+  const endFloor = document.getElementById('endFloor');
+  const endBest = document.getElementById('endBest');
+  const resultTitle = document.getElementById('resultTitle');
+
+  // 游戏状态
+  const STATE = { MENU: 0, PLAY: 1, OVER: 2 };
+  let state = STATE.MENU;
+
+  // 平台类型
+  const PLAT = { NORMAL: 0, MOVING: 1, SPIKE: 2, BREAK: 3 };
+
+  // 玩家
+  let player;
+  // 平台列表
+  let platforms = [];
+  // 已通过的层数（从底部生成算）
+  let floorCount = 0;
+  // 全局上升速度（世界向上移动）
+  let worldSpeed = 1.0;
+  // 已生成的平台总数（用于计分）
+  let totalGenerated = 0;
+  // 上次生成平台的世界坐标y
+  let lastSpawnY = 0;
+  // 按键
+  const keys = {};
+  // 最高分
+  let best = parseInt(localStorage.getItem('floor100_best') || '0', 10);
+  menuBest.textContent = best;
+  hudBest.textContent = best;
+
+  // 粒子（踩碎平台 / 失败）
+  let particles = [];
+
+  function resetGame() {
+    player = {
+      x: W / 2 - 15,
+      y: H / 2 - 40,
+      w: 30,
+      h: 40,
+      vx: 0,
+      vy: 0,
+      onGround: false,
+      face: 1, // 1右 -1左
+      walkFrame: 0
+    };
+    platforms = [];
+    particles = [];
+    floorCount = 0;
+    totalGenerated = 0;
+    worldSpeed = 1.0;
+
+    // 初始脚下平台
+    platforms.push(makePlatform(W / 2 - 50, H / 2, 100, PLAT.NORMAL, false));
+    // 预生成一批平台（向下方向 = y更大）
+    let y = H / 2;
+    for (let i = 0; i < 12; i++) {
+      y += 70 + Math.random() * 40;
+      platforms.push(makePlatformRandom(y));
+    }
+    lastSpawnY = y;
+  }
+
+  function makePlatform(x, y, w, type, moving) {
+    return {
+      x, y, w, h: 14,
+      type,
+      moving: !!moving,
+      dir: Math.random() < 0.5 ? -1 : 1,
+      speed: 1 + Math.random() * 1.2,
+      broken: false,
+      breakTimer: 0
+    };
+  }
+
+  function makePlatformRandom(y) {
+    const w = 70 + Math.random() * 40;
+    const x = Math.random() * (W - w);
+    // 类型分布：普通60%，移动15%，易碎15%，尖刺10%
+    const r = Math.random();
+    let type;
+    if (r < 0.60) type = PLAT.NORMAL;
+    else if (r < 0.75) type = PLAT.MOVING;
+    else if (r < 0.90) type = PLAT.BREAK;
+    else type = PLAT.SPIKE;
+
+    const p = makePlatform(x, y, w, type, type === PLAT.MOVING);
+    totalGenerated++;
+    return p;
+  }
+
+  // 输入
+  window.addEventListener('keydown', e => {
+    keys[e.key.toLowerCase()] = true;
+    if (['arrowleft','arrowright','arrowup','arrowdown',' '].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  });
+  window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+
+  document.getElementById('startBtn').addEventListener('click', startGame);
+  document.getElementById('retryBtn').addEventListener('click', startGame);
+
+  function startGame() {
+    resetGame();
+    state = STATE.PLAY;
+    menuScreen.classList.add('hidden');
+    endScreen.classList.add('hidden');
+    hud.style.display = 'flex';
+  }
+
+  function endGame(win) {
+    state = STATE.OVER;
+    hud.style.display = 'none';
+    if (floorCount > best) {
+      best = floorCount;
+      localStorage.setItem('floor100_best', best);
+    }
+    resultTitle.textContent = win ? '通关成功！' : '挑战失败';
+    resultTitle.className = 'result-title ' + (win ? 'win' : 'lose');
+    endFloor.textContent = floorCount;
+    endBest.textContent = best;
+    endScreen.classList.remove('hidden');
+  }
+
+  // 生成粒子
+  function spawnParticles(x, y, color, count) {
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x, y,
+        vx: (Math.random() - 0.5) * 6,
+        vy: (Math.random() - 0.8) * 6,
+        life: 30 + Math.random() * 20,
+        maxLife: 50,
+        color,
+        size: 2 + Math.random() * 3
+      });
+    }
+  }
+
+  function update() {
+    if (state !== STATE.PLAY) return;
+
+    // 输入
+    const left = keys['arrowleft'] || keys['a'];
+    const right = keys['arrowright'] || keys['d'];
+    const moveSpeed = 5;
+    if (left && !right) { player.vx = -moveSpeed; player.face = -1; }
+    else if (right && !left) { player.vx = moveSpeed; player.face = 1; }
+    else { player.vx *= 0.7; if (Math.abs(player.vx) < 0.1) player.vx = 0; }
+
+    // 重力
+    player.vy += 0.55;
+    if (player.vy > 14) player.vy = 14;
+
+    // 水平移动 + 边界环绕
+    player.x += player.vx;
+    if (player.x + player.w < 0) player.x = W;
+    else if (player.x > W) player.x = -player.w;
+
+    // 垂直移动
+    player.y += player.vy;
+    player.onGround = false;
+
+    // 世界上升（平台上移）
+    for (const p of platforms) {
+      p.y -= worldSpeed;
+      if (p.moving && !p.broken) {
+        p.x += p.dir * p.speed;
+        if (p.x < 0) { p.x = 0; p.dir = 1; }
+        if (p.x + p.w > W) { p.x = W - p.w; p.dir = -1; }
+      }
+      if (p.broken) {
+        p.breakTimer++;
+        p.y += 2; // 碎片下落
+      }
+    }
+
+    // 碰撞检测：玩家下落时踩到平台
+    if (player.vy >= 0) {
+      for (const p of platforms) {
+        if (p.broken) continue;
+        if (p.type === PLAT.SPIKE) {
+          // 尖刺：从上方踩到也会受伤（简化：接触即死）
+          if (rectOverlap(player.x, player.y, player.w, player.h, p.x, p.y - 6, p.w, p.h + 6)) {
+            spawnParticles(player.x + player.w/2, player.y + player.h/2, '#ff6b6b', 30);
+            endGame(false);
+            return;
+          }
+          continue;
+        }
+        // 普通 / 移动 / 易碎：从上方落下踩到
+        const prevBottom = player.y + player.h - player.vy;
+        const curBottom = player.y + player.h;
+        if (curBottom >= p.y && prevBottom <= p.y + 2 &&
+            player.x + player.w > p.x && player.x < p.x + p.w) {
+          player.y = p.y - player.h;
+          player.vy = 0;
+          player.onGround = true;
+          if (p.type === PLAT.BREAK) {
+            p.broken = true;
+            spawnParticles(p.x + p.w/2, p.y + p.h/2, '#feca57', 15);
+          }
+          if (p.moving) {
+            // 玩家跟随移动平台
+            player.x += p.dir * p.speed;
+          }
+          break;
+        }
+      }
+    }
+
+    // 清理超出屏幕下方的平台
+    platforms = platforms.filter(p => p.y < H + 50 && !(p.broken && p.breakTimer > 30));
+
+    // 生成新平台（当最下方平台接近屏幕底部时）
+    let lowestY = 0;
+    for (const p of platforms) if (p.y > lowestY) lowestY = p.y;
+    while (lowestY < H + 200) {
+      const gap = 65 + Math.random() * 45;
+      lowestY += gap;
+      platforms.push(makePlatformRandom(lowestY));
+    }
+
+    // 层数计算：每有一个平台从屏幕顶部移出（被踩过）就 +1
+    // 简化：根据世界累计位移来算
+    // 这里用 totalGenerated 减去还在屏幕上的数量近似
+    // 更精确：统计 y < 0 且未broken 的平台（被玩家越过的）
+    // 实际采用：玩家下降的总距离 / 平均间距
+    // 这里用：世界累计位移 / 100
+    // 使用更直观的方法：记录已"通过"的平台（y < -20 且未broken）
+    let passed = 0;
+    for (const p of platforms) {
+      if (p.y < -20 && !p.broken && p.type !== PLAT.SPIKE) passed++;
+    }
+    // 但这样会被重复计数，改用累计方式
+    // 重新设计：每生成一个平台，当它离开屏幕顶部时 floorCount++
+    // 用一个标记
+    // 简单做法：floorCount = 已生成 - 仍在屏幕内的非尖刺平台数
+    // 为避免复杂，使用累计位移法
+    // 这里用一个全局累计位移变量
+    // 改为：在 update 中累加 worldSpeed 到 totalRise
+    // 下面用 totalRise 计算
+    floorCount = Math.floor(totalRise / 90);
+    if (floorCount >= 100) {
+      endGame(true);
+      return;
+    }
+
+    // 速度递增
+    worldSpeed = 1.0 + floorCount * 0.035;
+    if (worldSpeed > 5) worldSpeed = 5;
+
+    // 玩家被顶出屏幕顶部 -> 失败
+    if (player.y + player.h < 0) {
+      spawnParticles(player.x + player.w/2, 0, '#ff6b6b', 30);
+      endGame(false);
+      return;
+    }
+    // 玩家掉出屏幕底部（罕见，但可能）-> 失败
+    if (player.y > H + 50) {
+      endGame(false);
+      return;
+    }
+
+    // 粒子更新
+    for (const pt of particles) {
+      pt.x += pt.vx;
+      pt.y += pt.vy;
+      pt.vy += 0.3;
+      pt.life--;
+    }
+    particles = particles.filter(pt => pt.life > 0);
+
+    // 行走动画
+    if (player.onGround && Math.abs(player.vx) > 0.5) {
+      player.walkFrame += 0.25;
+    }
+
+    // HUD
+    hudFloor.textContent = floorCount;
+    hudSpeed.textContent = worldSpeed.toFixed(1);
+    hudBest.textContent = best;
+  }
+
+  // 累计位移（用于层数）
+  let totalRise = 0;
+  const _origUpdate = update;
+  // 重写 update 以累计 totalRise
+  function updateWrapped() {
+    if (state === STATE.PLAY) totalRise += worldSpeed;
+    _origUpdate();
+  }
+  // 替换
+  // 这里直接修改：在 resetGame 中重置 totalRise
+  const _origReset = resetGame;
+  resetGame = function() {
+    _origReset();
+    totalRise = 0;
+  };
+
+  function rectOverlap(x1,y1,w1,h1,x2,y2,w2,h2) {
+    return x1 < x2+w2 && x1+w1 > x2 && y1 < y2+h2 && y1+h1 > y2;
+  }
+
+  // 绘制
+  function draw() {
+    // 背景
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#0b1020');
+    g.addColorStop(1, '#1a1f3a');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // 背景网格（营造深度感）
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    const offset = (totalRise * 0.3) % 40;
+    for (let y = -offset; y < H; y += 40) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+    for (let x = 0; x < W; x += 40) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, H);
+      ctx.stroke();
+    }
+
+    // 平台
+    for (const p of platforms) {
+      if (p.broken) {
+        // 碎片
+        ctx.globalAlpha = Math.max(0, 1 - p.breakTimer / 30);
+        drawPlatform(p);
+        ctx.globalAlpha = 1;
+      } else {
+        drawPlatform(p);
+      }
+    }
+
+    // 玩家
+    if (state === STATE.PLAY || state === STATE.OVER) {
+      drawPlayer();
+    }
+
+    // 粒子
+    for (const pt of particles) {
+      ctx.globalAlpha = pt.life / pt.maxLife;
+      ctx.fillStyle = pt.color;
+      ctx.fillRect(pt.x, pt.y, pt.size, pt.size);
+    }
+    ctx.globalAlpha = 1;
+
+    // 顶部危险区提示
+    if (state === STATE.PLAY && player.y < 80) {
+      const alpha = (80 - player.y) / 80 * 0.4;
+      ctx.fillStyle = `rgba(255, 80, 80, ${alpha})`;
+      ctx.fillRect(0, 0, W, 6);
+    }
+  }
+
+  function drawPlatform(p) {
+    let color1, color2;
+    switch (p.type) {
+      case PLAT.NORMAL: color1 = '#4ade80'; color2 = '#22c55e'; break;
+      case PLAT.MOVING: color1 = '#60a5fa'; color2 = '#3b82f6'; break;
+      case PLAT.SPIKE:  color1 = '#f87171'; color2 = '#dc2626'; break;
+      case PLAT.BREAK:  color1 = '#fbbf24'; color2 = '#f59e0b'; break;
+    }
+
+    if (p.type === PLAT.SPIKE) {
+      // 尖刺平台：画三角形尖刺
+      ctx.fillStyle = color2;
+      ctx.fillRect(p.x, p.y + 6, p.w, p.h - 6);
+      ctx.fillStyle = color1;
+      const spikes = Math.floor(p.w / 12);
+      const sw = p.w / spikes;
+      for (let i = 0; i < spikes; i++) {
+        ctx.beginPath();
+        ctx.moveTo(p.x + i * sw, p.y + 8);
+        ctx.lineTo(p.x + i * sw + sw/2, p.y - 4);
+        ctx.lineTo(p.x + (i+1) * sw, p.y + 8);
+        ctx.closePath();
+        ctx.fill();
+      }
+    } else {
+      // 普通平台
+      const grad = ctx.createLinearGradient(0, p.y, 0, p.y + p.h);
+      grad.addColorStop(0, color1);
+      grad.addColorStop(1, color2);
+      ctx.fillStyle = grad;
+      roundRect(ctx, p.x, p.y, p.w, p.h, 4);
+      ctx.fill();
+      // 高光
+      ctx.fillStyle = 'rgba(255,255,255,0.25)';
+      ctx.fillRect(p.x + 3, p.y + 2, p.w - 6, 2);
+      // 易碎平台画裂纹
+      if (p.type === PLAT.BREAK) {
+        ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x + p.w*0.3, p.y + 3);
+        ctx.lineTo(p.x + p.w*0.4, p.y + p.h - 3);
+        ctx.moveTo(p.x + p.w*0.65, p.y + 3);
+        ctx.lineTo(p.x + p.w*0.55, p.y + p.h - 3);
+        ctx.stroke();
+      }
+      // 移动平台画箭头
+      if (p.type === PLAT.MOVING) {
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.beginPath();
+        const cx = p.x + p.w/2;
+        const cy = p.y + p.h/2;
+        ctx.moveTo(cx - 6, cy);
+        ctx.lineTo(cx, cy - 3);
+        ctx.lineTo(cx + 6, cy);
+        ctx.lineTo(cx, cy + 3);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+  }
+
+  function drawPlayer() {
+    const x = player.x, y = player.y, w = player.w, h = player.h;
+    // 身体
+    ctx.fillStyle = '#feca57';
+    roundRect(ctx, x + 4, y + 14, w - 8, h - 18, 4);
+    ctx.fill();
+    // 头
+    ctx.fillStyle = '#ffd6a5';
+    ctx.beginPath();
+    ctx.arc(x + w/2, y + 9, 9, 0, Math.PI * 2);
+    ctx.fill();
+    // 眼睛
+    ctx.fillStyle = '#1a1a2e';
+    const eyeOffset = player.face * 2;
+    ctx.beginPath();
+    ctx.arc(x + w/2 - 3 + eyeOffset, y + 8, 1.5, 0, Math.PI * 2);
+    ctx.arc(x + w/2 + 3 + eyeOffset, y + 8, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    // 腿（走路动画）
+    ctx.fillStyle = '#1e3a8a';
+    const legSwing = player.onGround ? Math.sin(player.walkFrame) * 3 : 2;
+    ctx.fillRect(x + 7, y + h - 6, 6, 6 + legSwing);
+    ctx.fillRect(x + w - 13, y + h - 6, 6, 6 - legSwing);
+    // 阴影
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
+    ctx.beginPath();
+    ctx.ellipse(x + w/2, y + h + 2, w/2 - 2, 2, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  // 主循环
+  function loop() {
+    updateWrapped();
+    draw();
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+</body>
+</html>
+
+
+
