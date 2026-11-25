@@ -25,14 +25,14 @@
     <meta property="og:description" content="Turn your Android phone, TV, or TV box into a DLNA and AirPlay receiver. Stream videos, photos, and music from iPhone, iPad, Mac, Windows, and Android.">
     <meta property="og:url" content="https://aicareles.github.io/cast-receiver/">
     <meta property="og:site_name" content="Cast Receiver">
-    <meta property="og:image" content="https://aicareles.github.io/cast-receiver/cast-receiver-preview.jpg">
+    <meta property="og:image" content="https://aicareles.github.io/cast-receiver/screenshots/cast-receiver-preview.jpg">
     <meta property="og:image:alt" content="Cast Receiver DLNA and AirPlay receiver">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cast Receiver — DLNA & AirPlay Receiver for Android">
     <meta name="twitter:description" content="Turn your Android phone, TV, or TV box into a DLNA and AirPlay receiver.">
-    <meta name="twitter:image" content="https://aicareles.github.io/cast-receiver/cast-receiver-preview.jpg">
+    <meta name="twitter:image" content="https://aicareles.github.io/cast-receiver/screenshots/cast-receiver-preview.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,8 +91,6 @@
             --text: #f2f4f7;
             --text-secondary: #9aa0ab;
             --text-tertiary: #6b7280;
-            --accent: #f2f4f7;
-            --status-green: #22c55e;
             --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
             --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
@@ -208,8 +206,8 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 56px;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 48px;
             align-items: center;
         }
 
@@ -223,7 +221,7 @@
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 700;
             line-height: 1.12;
             letter-spacing: -0.03em;
@@ -234,7 +232,7 @@
         .hero-desc {
             font-size: 16px;
             color: var(--text-secondary);
-            max-width: 480px;
+            max-width: 460px;
             margin-bottom: 28px;
         }
 
@@ -286,98 +284,34 @@
             color: var(--text-tertiary);
             display: flex;
             flex-wrap: wrap;
-            gap: 8px 16px;
+            gap: 8px 14px;
         }
 
-        /* TV Receiver Frame */
+        /* Video Frame */
         .tv-frame {
             background: #07080a;
             border: 1px solid var(--border-strong);
             border-radius: 14px;
-            padding: 14px;
+            padding: 10px;
             box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
         }
 
-        .tv-screen {
-            background: #101216;
-            border: 1px solid var(--border);
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
             border-radius: 8px;
-            aspect-ratio: 16 / 10;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .tv-topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .tv-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-family: var(--mono);
-            font-size: 11px;
-            color: #d1d5db;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--status-green);
-        }
-
-        .tv-center {
-            padding: 16px 0;
-        }
-
-        .tv-device-label {
-            font-size: 12px;
-            color: var(--text-tertiary);
-            margin-bottom: 4px;
-        }
-
-        .tv-device-name {
-            font-size: 22px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
-
-        .tv-hint {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        .tv-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 14px;
-            border-top: 1px solid var(--border);
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--text-tertiary);
-        }
-
-        .tv-protocols {
-            display: flex;
-            gap: 8px;
-        }
-
-        .tv-chip {
-            padding: 3px 8px;
-            border-radius: 4px;
-            background: var(--surface-2);
-            color: #d1d5db;
+            overflow: hidden;
+            background: #000;
             border: 1px solid var(--border);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* Sections */
@@ -491,7 +425,7 @@
             border-radius: 6px;
         }
 
-        /* Features List (Clean 2-column instead of generic 3x2 cards) */
+        /* Features List */
         .feature-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -563,7 +497,7 @@
             color: #d1d5db;
         }
 
-        /* FAQ using native details */
+        /* FAQ */
         .faq-list {
             max-width: 720px;
             border-top: 1px solid var(--border-strong);
@@ -728,29 +662,15 @@
                         </div>
                     </div>
 
-                    <div class="tv-frame" aria-label="Cast Receiver TV screen preview">
-                        <div class="tv-screen">
-                            <div class="tv-topbar">
-                                <span>Cast Receiver</span>
-                                <span class="tv-status">
-                                    <span class="status-dot"></span>
-                                    Ready on Wi-Fi
-                                </span>
-                            </div>
-
-                            <div class="tv-center">
-                                <div class="tv-device-label">Visible on your network as</div>
-                                <div class="tv-device-name">Living Room TV</div>
-                                <div class="tv-hint">Select this device from AirPlay or any DLNA app to start playing.</div>
-                            </div>
-
-                            <div class="tv-footer">
-                                <div class="tv-protocols">
-                                    <span class="tv-chip">AirPlay</span>
-                                    <span class="tv-chip">DLNA / UPnP</span>
-                                </div>
-                                <span>Hardware decode · 4K</span>
-                            </div>
+                    <div class="tv-frame">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube-nocookie.com/embed/2I-NPWsAguQ?rel=0"
+                                title="Cast Receiver demo video"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                 </div>
