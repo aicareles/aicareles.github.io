@@ -1,791 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stash — Bookmark &amp; Link Saver for Android</title>
+    <meta name="description" content="Stash is a minimalist bookmark and link saver for Android phones and tablets. Save web links, articles, images, videos, and PDFs from any app, organize with tags and smart search, and find what you saved in seconds.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aicareles.github.io/stash/">
 
-  <title>Stash — AI Save & Search</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Leox Studio">
+    <meta property="og:title" content="Stash — Bookmark &amp; Link Saver for Android">
+    <meta property="og:description" content="Save links, articles, images, videos, and files from any app into one quiet, searchable library on Android.">
+    <meta property="og:url" content="https://aicareles.github.io/stash/">
 
-  <meta
-    name="description"
-    content="Save anything. AI organizes everything. Find what matters with Stash."
-  />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Stash — Bookmark &amp; Link Saver for Android">
+    <meta name="twitter:description" content="A minimalist bookmark manager and link saver for Android phones and tablets. Free to download with optional subscription or one-time lifetime unlock.">
 
-  <style>
-    :root {
-      --text: #1d1d1f;
-      --secondary: #6e6e73;
-      --blue: #0071e3;
-      --blue-hover: #0077ed;
-      --background: #ffffff;
-      --soft-bg: #f5f5f7;
-      --card: #ffffff;
-      --border: rgba(0, 0, 0, 0.08);
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://aicareles.github.io/stash/#app",
+          "name": "Stash: Bookmark & Link Saver",
+          "alternateName": "Stash",
+          "operatingSystem": "Android",
+          "applicationCategory": "ProductivityApplication",
+          "url": "https://aicareles.github.io/stash/",
+          "downloadUrl": "https://play.google.com/store/apps/details?id=com.aicareles.stash",
+          "installUrl": "https://play.google.com/store/apps/details?id=com.aicareles.stash",
+          "description": "Stash is a minimalist bookmark manager and link saver for Android phones and tablets. Capture links, articles, images, videos, audio, and PDFs from any app via Android Share, organize them with automatic categorization and custom tags, and find anything quickly with natural search.",
+          "featureList": [
+            "Save web links, articles, images, videos, audio, and PDFs from any app",
+            "One-tap capture via the native Android Share menu",
+            "Automatic categorization paired with custom tags",
+            "Fast natural-language search across your saved library",
+            "Clean, ad-free reading and bookmarking workspace for Android phones and tablets",
+            "Free to download with optional subscription or one-time lifetime unlock"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "description": "Free to download on Google Play with optional subscription or one-time lifetime purchase"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Leox Studio",
+            "url": "https://aicareles.github.io/",
+            "email": "superliu0911@gmail.com"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Leox Studio",
+              "item": "https://aicareles.github.io/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Stash",
+              "item": "https://aicareles.github.io/stash/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What can I save in Stash?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can save web links, articles, images, videos, audio clips, PDFs, and everyday notes or documents. Anything you share from your browser or social apps can be stored in Stash."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I save links from other Android apps?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tap the Share button in Chrome, YouTube, Reddit, X, or any other Android app and pick Stash from the share sheet. Your item is saved immediately without switching out of what you are reading."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is Stash different from browser bookmarks?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Browser bookmarks only store URLs inside one browser and quickly turn into messy folders. Stash collects links, images, and files from every app on your phone or tablet, automatically categorizes them, supports custom tags, and lets you search naturally even if you forget the exact title."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Stash free, or is there a one-time lifetime option?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Stash is free to download and use on Google Play. To unlock full features, you can choose either a subscription or a one-time lifetime purchase with no recurring charges."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Stash work on both Android phones and tablets?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Stash is designed for Android phones and tablets, with a clean layout that adapts to both compact and larger screens."
+              }
+            }
+          ]
+        }
+      ]
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "SF Pro Text",
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-      background: var(--background);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Navigation */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .nav-container {
-      width: min(980px, calc(100% - 40px));
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 21px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      font-size: 13px;
-      color: var(--secondary);
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    /* Hero */
-
-    .hero {
-      text-align: center;
-      padding: 110px 20px 100px;
-    }
-
-    .hero-eyebrow {
-      color: var(--blue);
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: clamp(48px, 8vw, 84px);
-      line-height: 1.05;
-      letter-spacing: -4px;
-      font-weight: 700;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(21px, 3vw, 28px);
-      line-height: 1.35;
-      color: var(--secondary);
-      max-width: 680px;
-      margin: 26px auto 34px;
-      letter-spacing: -0.5px;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 22px;
-      border-radius: 980px;
-      font-size: 17px;
-      transition: 0.2s ease;
-    }
-
-    .button-primary {
-      background: var(--blue);
-      color: white;
-    }
-
-    .button-primary:hover {
-      background: var(--blue-hover);
-    }
-
-    .button-secondary {
-      color: var(--blue);
-    }
-
-    .button-secondary:hover {
-      text-decoration: underline;
-    }
-
-    /* Hero visual */
-
-    .hero-visual {
-      width: min(1000px, calc(100% - 40px));
-      margin: 0 auto 100px;
-      padding: 14px;
-      border-radius: 34px;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 113, 227, 0.12),
-          rgba(175, 82, 222, 0.1),
-          rgba(255, 159, 10, 0.1)
-        );
-    }
-
-    .stash-preview {
-      min-height: 480px;
-      border-radius: 26px;
-      background: #fbfbfd;
-      padding: 40px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .preview-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 36px;
-    }
-
-    .preview-title {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.8px;
-    }
-
-    .search-box {
-      width: 260px;
-      padding: 12px 18px;
-      border-radius: 16px;
-      background: white;
-      border: 1px solid var(--border);
-      color: #86868b;
-      font-size: 14px;
-    }
-
-    .preview-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .preview-card {
-      min-height: 180px;
-      background: white;
-      border-radius: 22px;
-      padding: 22px;
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.25s ease;
-    }
-
-    .preview-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .card-icon {
-      width: 46px;
-      height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 14px;
-      font-size: 23px;
-      background: var(--soft-bg);
-    }
-
-    .card-title {
-      font-size: 17px;
-      font-weight: 600;
-      margin-top: 16px;
-    }
-
-    .card-text {
-      font-size: 13px;
-      color: var(--secondary);
-      margin-top: 7px;
-      line-height: 1.4;
-    }
-
-    /* Sections */
-
-    section {
-      padding: 110px 20px;
-    }
-
-    .section-dark {
-      background: var(--text);
-      color: white;
-    }
-
-    .container {
-      width: min(980px, 100%);
-      margin: 0 auto;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 70px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(38px, 6vw, 56px);
-      letter-spacing: -2.5px;
-      line-height: 1.1;
-    }
-
-    .section-heading p {
-      max-width: 620px;
-      margin: 20px auto 0;
-      color: var(--secondary);
-      font-size: 21px;
-      line-height: 1.4;
-    }
-
-    .section-dark .section-heading p {
-      color: #a1a1a6;
-    }
-
-    /* Feature cards */
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .feature {
-      background: var(--soft-bg);
-      border-radius: 28px;
-      padding: 42px;
-      min-height: 280px;
-    }
-
-    .feature-icon {
-      font-size: 34px;
-      margin-bottom: 28px;
-    }
-
-    .feature h3 {
-      font-size: 28px;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .feature p {
-      color: var(--secondary);
-      font-size: 17px;
-      line-height: 1.5;
-      max-width: 400px;
-    }
-
-    /* Steps */
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .step {
-      padding: 12px 10px;
-    }
-
-    .step-number {
-      color: var(--blue);
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .step h3 {
-      font-size: 28px;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .step p {
-      color: var(--secondary);
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    /* Privacy */
-
-    .privacy-message {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .privacy-icon {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 30px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-    }
-
-    .privacy-message h2 {
-      font-size: clamp(40px, 6vw, 60px);
-      letter-spacing: -2.5px;
-      line-height: 1.1;
-    }
-
-    .privacy-message p {
-      color: #a1a1a6;
-      font-size: 21px;
-      line-height: 1.5;
-      margin: 22px auto;
-      max-width: 650px;
-    }
-
-    .privacy-link {
-      color: #2997ff;
-      font-size: 17px;
-    }
-
-    /* CTA */
-
-    .cta {
-      text-align: center;
-      background: var(--soft-bg);
-    }
-
-    .cta h2 {
-      font-size: clamp(42px, 6vw, 64px);
-      letter-spacing: -2.8px;
-    }
-
-    .cta p {
-      color: var(--secondary);
-      font-size: 21px;
-      margin: 18px 0 30px;
-    }
-
-    /* Footer */
-
-    footer {
-      background: var(--soft-bg);
-      border-top: 1px solid var(--border);
-      padding: 28px 20px;
-    }
-
-    .footer-container {
-      width: min(980px, 100%);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--secondary);
-      font-size: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-    @media (max-width: 700px) {
-      .nav-links a:not(:last-child) {
-        display: none;
-      }
-
-      .hero {
-        padding: 80px 20px 70px;
-      }
-
-      h1 {
-        letter-spacing: -2.5px;
-      }
-
-      .stash-preview {
-        padding: 24px;
-        min-height: auto;
-      }
-
-      .preview-header {
-        display: block;
-      }
-
-      .search-box {
-        margin-top: 18px;
-        width: 100%;
-      }
-
-      .preview-grid,
-      .features,
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 80px 20px;
-      }
-
-      .feature {
-        padding: 32px;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-      }
-    }
-  </style>
+    </script>
+
+    <style>
+        :root {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --text: #111111;
+            --text-muted: #555555;
+            --text-subtle: #767676;
+            --border: #e6e6e6;
+            --border-strong: #d0d0d0;
+            --btn-bg: #111111;
+            --btn-hover: #2b2b2b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER */
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(250, 250, 250, 0.92);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .nav-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-download {
+            color: var(--text) !important;
+            font-weight: 500;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 84px 0 64px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            color: var(--text-subtle);
+            margin-bottom: 16px;
+            letter-spacing: 0.01em;
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 48px);
+            font-weight: 650;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            max-width: 640px;
+        }
+
+        .lead {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--btn-bg);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: background 0.15s ease;
+        }
+
+        .btn:hover {
+            background: var(--btn-hover);
+        }
+
+        .btn-ghost {
+            font-size: 15px;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 12px 4px;
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+        }
+
+        .meta-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-subtle);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 56px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px 36px;
+        }
+
+        .item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .item p {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        /* STEPS */
+        .steps {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .step-num {
+            font-size: 13px;
+            color: var(--text-subtle);
+            margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .steps h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .steps p {
+            font-size: 14.5px;
+            color: var(--text-muted);
+        }
+
+        /* DETAILS / SPECS LIST */
+        .spec-list {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            overflow: hidden;
+        }
+
+        .spec-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 16px;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14.5px;
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: var(--text-subtle);
+            font-weight: 500;
+        }
+
+        .spec-value {
+            color: var(--text);
+        }
+
+        /* FAQ */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 18px 0;
+        }
+
+        .faq-item:first-child {
+            padding-top: 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            color: var(--text-subtle);
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+
+        .faq-item p {
+            margin-top: 10px;
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 660px;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .cta p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            max-width: 520px;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0 40px;
+            font-size: 13px;
+            color: var(--text-subtle);
+        }
+
+        .footer-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-subtle);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 680px) {
+            .hero { padding: 56px 0 48px; }
+            .nav-links { gap: 16px; }
+            .grid-2, .steps { grid-template-columns: 1fr; }
+            .spec-row { grid-template-columns: 1fr; gap: 4px; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
-
 <body>
 
-  <nav>
-    <div class="nav-container">
-      <a href="index.html" class="logo">Stash</a>
-
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#privacy">Privacy</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
+<header>
+    <div class="nav-inner">
+        <a href="https://aicareles.github.io/stash/" class="brand">Stash</a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.aicareles.stash" class="nav-download" target="_blank" rel="noopener">Google Play</a></li>
+        </ul>
     </div>
-  </nav>
+</header>
 
-
-  <main>
-
-    <!-- Hero -->
-
-    <section class="hero">
-      <div class="hero-eyebrow">Stash: AI Save & Search</div>
-
-      <h1>
-        Save anything.<br />
-        Find everything.
-      </h1>
-
-      <p class="hero-subtitle">
-        Your personal space for links, images, videos, documents and more.
-        AI helps organize what matters and makes it easy to find again.
-      </p>
-
-      <div class="hero-actions">
-        <!-- Replace # with your App Store URL -->
-        <a href="#" class="button button-primary">
-          Download Stash
-        </a>
-
-        <a href="#features" class="button button-secondary">
-          Learn more →
-        </a>
-      </div>
-    </section>
-
-
-    <!-- Product Preview -->
-
-    <div class="hero-visual">
-      <div class="stash-preview">
-
-        <div class="preview-header">
-          <div class="preview-title">Everything you save.</div>
-
-          <div class="search-box">
-            🔍 Search anything you've saved
-          </div>
+<main class="container">
+    <!-- HERO -->
+    <div class="hero">
+        <p class="eyebrow">Stash: Bookmark &amp; Link Saver · Android</p>
+        <h1>Save links, images, and files in one quiet place.</h1>
+        <p class="lead">
+            Stash is a minimalist bookmark manager and link saver for Android phones and tablets. Capture anything from any app, keep it organized without manual folders, and find it again in seconds.
+        </p>
+        <div class="actions">
+            <a href="https://play.google.com/store/apps/details?id=com.aicareles.stash" class="btn" target="_blank" rel="noopener">
+                Download on Google Play
+            </a>
+            <a href="#features" class="btn-ghost">See how it works →</a>
         </div>
-
-        <div class="preview-grid">
-
-          <div class="preview-card">
-            <div class="card-icon">🔗</div>
-
-            <div>
-              <div class="card-title">Links</div>
-              <div class="card-text">
-                Save articles, websites and ideas from anywhere.
-              </div>
-            </div>
-          </div>
-
-
-          <div class="preview-card">
-            <div class="card-icon">🖼️</div>
-
-            <div>
-              <div class="card-title">Images</div>
-              <div class="card-text">
-                Keep inspiration and important visuals together.
-              </div>
-            </div>
-          </div>
-
-
-          <div class="preview-card">
-            <div class="card-icon">📄</div>
-
-            <div>
-              <div class="card-title">Files</div>
-              <div class="card-text">
-                PDFs, documents, audio, video and more.
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
+        <p class="meta-note">Free to download · Optional subscription or one-time lifetime unlock</p>
     </div>
 
-
-    <!-- Features -->
-
+    <!-- FEATURES -->
     <section id="features">
-
-      <div class="container">
-
-        <div class="section-heading">
-          <h2>Everything belongs together.</h2>
-
-          <p>
-            Stash brings the things you save across different apps into one
-            simple, searchable place.
-          </p>
+        <h2>Built for everyday saving</h2>
+        <div class="grid-2">
+            <div class="item">
+                <h3>Links, media, and documents</h3>
+                <p>Keep web pages, articles, screenshots, videos, audio clips, and PDFs together instead of scattered across browser tabs and chat apps.</p>
+            </div>
+            <div class="item">
+                <h3>Save from any app</h3>
+                <p>Use the standard Android Share menu in Chrome, YouTube, Reddit, or anywhere else to send items straight to Stash in one tap.</p>
+            </div>
+            <div class="item">
+                <h3>Automatic sorting &amp; tags</h3>
+                <p>Smart categorization groups your saved items automatically, while custom tags let you organize collections the way you prefer.</p>
+            </div>
+            <div class="item">
+                <h3>Search the way you remember</h3>
+                <p>Find saved links and files with natural search, even when you do not remember the exact page title or URL.</p>
+            </div>
         </div>
-
-
-        <div class="features">
-
-          <div class="feature">
-            <div class="feature-icon">📥</div>
-
-            <h3>Save anything.</h3>
-
-            <p>
-              Save links, images, videos, audio, PDFs, documents and more.
-              Capture content from almost any app using the share feature.
-            </p>
-          </div>
-
-
-          <div class="feature">
-            <div class="feature-icon">✨</div>
-
-            <h3>AI organizes.</h3>
-
-            <p>
-              Let AI automatically categorize your saved content and help turn
-              scattered information into an organized collection.
-            </p>
-          </div>
-
-
-          <div class="feature">
-            <div class="feature-icon">🔎</div>
-
-            <h3>Search naturally.</h3>
-
-            <p>
-              Find what you need with intelligent search. Rediscover things
-              you saved without remembering the exact words.
-            </p>
-          </div>
-
-
-          <div class="feature">
-            <div class="feature-icon">🏷️</div>
-
-            <h3>Make it yours.</h3>
-
-            <p>
-              Create custom tags and organize your collection in the way that
-              works best for you.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
     </section>
 
-
-    <!-- How it works -->
-
-    <section>
-
-      <div class="container">
-
-        <div class="section-heading">
-          <h2>Save. Organize. Find.</h2>
-
-          <p>
-            A simpler way to keep track of the things worth remembering.
-          </p>
-        </div>
-
-
-        <div class="steps">
-
-          <div class="step">
-            <div class="step-number">01</div>
-
-            <h3>Save</h3>
-
-            <p>
-              Share anything you want to keep with Stash.
-            </p>
-          </div>
-
-
-          <div class="step">
-            <div class="step-number">02</div>
-
-            <h3>Organize</h3>
-
-            <p>
-              AI helps categorize and organize your saved content.
-            </p>
-          </div>
-
-
-          <div class="step">
-            <div class="step-number">03</div>
-
-            <h3>Find</h3>
-
-            <p>
-              Search your collection and quickly rediscover what matters.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
+    <!-- HOW IT WORKS -->
+    <section id="how">
+        <h2>How it works</h2>
+        <ol class="steps">
+            <li>
+                <div class="step-num">01</div>
+                <h3>Share to Stash</h3>
+                <p>Whenever you come across something worth keeping, tap Share and select Stash.</p>
+            </li>
+            <li>
+                <div class="step-num">02</div>
+                <h3>Organized for you</h3>
+                <p>Stash automatically categorizes your link, image, or file and keeps your tags tidy.</p>
+            </li>
+            <li>
+                <div class="step-num">03</div>
+                <h3>Find it anytime</h3>
+                <p>Type a keyword or description to pull up what you saved in seconds.</p>
+            </li>
+        </ol>
     </section>
 
-
-    <!-- Privacy -->
-
-    <section id="privacy" class="section-dark">
-
-      <div class="container">
-
-        <div class="privacy-message">
-
-          <div class="privacy-icon">🔒</div>
-
-          <h2>Your privacy stays yours.</h2>
-
-          <p>
-            Stash has no ads, no in-app purchases and no user data collection.
-            Your privacy isn't a product.
-          </p>
-
-          <a href="privacy.html" class="privacy-link">
-            Read our Privacy Policy →
-          </a>
-
+    <!-- SPECS -->
+    <section id="details">
+        <h2>At a glance</h2>
+        <div class="spec-list">
+            <div class="spec-row">
+                <div class="spec-label">Platform</div>
+                <div class="spec-value">Android phones and tablets</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-label">Supported content</div>
+                <div class="spec-value">Web links, articles, images, videos, audio, PDFs, documents</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-label">Pricing</div>
+                <div class="spec-value">Free to download · Subscription or one-time lifetime purchase</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-label">Developer</div>
+                <div class="spec-value"><a href="https://aicareles.github.io/">Leox Studio</a></div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-label">Google Play</div>
+                <div class="spec-value"><a href="https://play.google.com/store/apps/details?id=com.aicareles.stash" target="_blank" rel="noopener">com.aicareles.stash</a></div>
+            </div>
         </div>
-
-      </div>
-
     </section>
 
+    <!-- FAQ -->
+    <section id="faq">
+        <h2>Questions</h2>
+        <div class="faq-list">
+            <details class="faq-item" open>
+                <summary>What can I save in Stash?</summary>
+                <p>You can save web links, articles, images, videos, audio clips, PDFs, and everyday notes or documents. Anything you share from your browser or social apps can be stored in Stash.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How do I save links from other Android apps?</summary>
+                <p>Tap the Share button in Chrome, YouTube, Reddit, X, or any other Android app and pick Stash from the share sheet. Your item is saved immediately without switching out of what you are reading.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How is Stash different from browser bookmarks?</summary>
+                <p>Browser bookmarks only store URLs inside one browser and quickly turn into messy folders. Stash collects links, images, and files from every app on your phone or tablet, automatically categorizes them, supports custom tags, and lets you search naturally even if you forget the exact title.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is Stash free, or is there a one-time lifetime option?</summary>
+                <p>Stash is free to download and use on Google Play. To unlock full features, you can choose either a subscription or a one-time lifetime purchase with no recurring charges.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Does Stash work on both Android phones and tablets?</summary>
+                <p>Yes. Stash is designed for Android phones and tablets, with a clean layout that adapts to both compact and larger screens.</p>
+            </details>
+        </div>
+    </section>
 
     <!-- CTA -->
-
-    <section class="cta">
-
-      <div class="container">
-
+    <div class="cta">
         <h2>Keep what matters.</h2>
-
-        <p>
-          Save anything today. Find it whenever you need it.
-        </p>
-
-        <!-- Replace # with your App Store URL -->
-        <a href="#" class="button button-primary">
-          Download Stash
+        <p>Start building a cleaner bookmark library on Android. Free to try, with a one-time lifetime option if you prefer not to subscribe.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.aicareles.stash" class="btn" target="_blank" rel="noopener">
+            Get Stash on Google Play
         </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer>
-
-    <div class="footer-container">
-
-      <div>
-        © 2026 Stash. All rights reserved.
-      </div>
-
-      <div class="footer-links">
-        <a href="privacy_policy.html">Privacy Policy</a>
-      </div>
-
     </div>
+</main>
 
-  </footer>
+<footer>
+    <div class="footer-inner">
+        <span>© 2026 Leox Studio</span>
+        <div class="footer-links">
+            <a href="https://aicareles.github.io/">All Apps</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="mailto:superliu0911@gmail.com">Contact</a>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
