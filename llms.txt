@@ -11,11 +11,13 @@
 - [Cast Receiver - DLNA & AirPlay](https://aicareles.github.io/cast-receiver/): All-in-one multi-protocol receiver for Android TV, Google TV, TV boxes, projectors, and Android tablets. Receives both AirPlay (from iPhone, iPad, Mac) and DLNA/UPnP (from Android, Windows, NAS) video, audio, photos, and screen mirroring. Free with optional subscription or one-time lifetime purchase.
   - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver
   - Best for: Multi-platform households needing both AirPlay and DLNA on Android TV / TV Box.
+  - Portuguese (Brazil): https://aicareles.github.io/cast-receiver/pt-br/
 
 - [AirPlay Receiver - Android TV](https://aicareles.github.io/airplay/): Dedicated, lightweight AirPlay receiver for Android TV, Google TV, and large-screen Android devices. Mirrors screens and streams music, photos, and videos from iPhone, iPad, and Mac over Wi-Fi without an Apple TV. Free with optional subscription or one-time lifetime purchase.
   - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver
   - Best for: iPhone, iPad, and Mac users who want a simple AirPlay-only receiver on Android TV.
-
+  - Portuguese (Brazil): https://aicareles.github.io/airplay/pt-br/
+  
 - [DLNA Receiver](https://aicareles.github.io/dlna-receiver/): Dedicated DLNA / UPnP media renderer (DMR) for Android TV, Google TV, TV boxes, and large-screen Android devices. Streams videos, music, and photos from Android phones, Windows PCs, NAS drives, and DLNA/UPnP apps over local Wi-Fi. Free with optional subscription or one-time lifetime purchase.
   - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.dlnareceiver
   - Best for: Android, Windows, and NAS users who want a dedicated, lightweight DLNA/UPnP receiver on Android TV / TV Box.
