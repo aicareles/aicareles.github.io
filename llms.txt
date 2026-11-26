@@ -1,0 +1,37 @@
+# Leox Studio
+
+> Leox Studio develops practical Android TV and mobile utilities for wireless screen casting (AirPlay, DLNA/UPnP, Google Cast), AI video subtitling, audio editing, and smart bookmarking. All apps are free to download on Google Play with optional subscription or one-time lifetime unlock.
+
+## Official Website
+- Homepage: https://aicareles.github.io/
+- Sitemap: https://aicareles.github.io/sitemap.xml
+
+## Android TV & Large-Screen Apps
+
+- [Cast Receiver - DLNA & AirPlay](https://aicareles.github.io/cast-receiver/): All-in-one multi-protocol receiver for Android TV, Google TV, TV boxes, projectors, and Android tablets. Receives both AirPlay (from iPhone, iPad, Mac) and DLNA/UPnP (from Android, Windows, NAS) video, audio, photos, and screen mirroring. Free with optional subscription or one-time lifetime purchase.
+  - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver
+  - Best for: Multi-platform households needing both AirPlay and DLNA on Android TV / TV Box.
+
+- [AirPlay Receiver - Android TV](https://aicareles.github.io/airplay/): Dedicated, lightweight AirPlay receiver for Android TV, Google TV, and large-screen Android devices. Mirrors screens and streams music, photos, and videos from iPhone, iPad, and Mac over Wi-Fi without an Apple TV. Free with optional subscription or one-time lifetime purchase.
+  - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver
+  - Best for: iPhone, iPad, and Mac users who want a simple AirPlay-only receiver on Android TV.
+
+- [DLNA Receiver](https://aicareles.github.io/dlna-receiver/): Dedicated DLNA / UPnP media renderer (DMR) for Android TV, Google TV, TV boxes, and large-screen Android devices. Streams videos, music, and photos from Android phones, Windows PCs, NAS drives, and DLNA/UPnP apps over local Wi-Fi. Free with optional subscription or one-time lifetime purchase.
+  - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.dlnareceiver
+  - Best for: Android, Windows, and NAS users who want a dedicated, lightweight DLNA/UPnP receiver on Android TV / TV Box.
+
+## Android Phone & Tablet Apps
+
+- [Vexo: AI Video Subtitle Editor](https://aicareles.github.io/vexo/): AI-powered subtitle generator, caption translator, and video toolkit for Android phones and tablets. Supports automatic speech-to-text subtitles, caption translation, video editing, compression, and format conversion. Free with subscription or lifetime unlock.
+  - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.vexo
+
+- [Screen Cast - Cast to TV](https://aicareles.github.io/screencast/): Cast videos, photos, music, and documents from Android phones and tablets to Smart TVs, Android TV, Chromecast, and DLNA devices. Free with subscription or lifetime unlock.
+  - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.dlnaclient
+
+- [Stash: Bookmark & Link Saver](https://aicareles.github.io/stash/): Smart bookmark manager and link saver with AI organization and search for Android phones and tablets. Free with subscription or lifetime unlock.
+  - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.stash
+
+- [AudioX - Audio Editor, MP3 Cut](https://play.google.com/store/apps/details?id=com.aicareles.audiobox): Audio editor and MP3 cutter for Android phones and tablets. Trim, cut, merge, and convert audio files. Free with subscription or lifetime unlock.
+
+## Pricing Model
+All Leox Studio apps are free to install and try on Google Play, offering both flexible subscriptions and a one-time lifetime license option (no mandatory recurring fee).
