@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Auto-Generate &amp; Translate Subtitles on Android for Reels, TikTok &amp; Shorts — Leox Studio</title>
+<meta name="description" content="Learn how to automatically generate accurate video subtitles, translate captions, compress videos, and clean up audio on Android using Vexo AI Subtitle Editor.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://aicareles.github.io/guides/auto-subtitles-android/">
+<meta name="theme-color" content="#f5f5f7" id="themeColorMeta">
+<script>
+(function(){
+  try {
+    if (localStorage.getItem("leox-theme") === "dark") {
+      document.documentElement.dataset.theme = "dark";
+      var m = document.getElementById("themeColorMeta");
+      if (m) m.content = "#0b0d11";
+    }
+  } catch (e) {}
+})();
+</script>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leox Studio">
+<meta property="og:title" content="How to Auto-Generate &amp; Translate Subtitles on Android">
+<meta property="og:description" content="Step-by-step workflow to add AI subtitles, translate captions, and export crisp videos for Reels, TikTok, and YouTube Shorts on Android.">
+<meta property="og:url" content="https://aicareles.github.io/guides/auto-subtitles-android/">
+<meta property="og:image" content="https://aicareles.github.io/vexo/screenshots/1.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Auto-Generate &amp; Translate Subtitles on Android">
+<meta name="twitter:description" content="Generate accurate captions and translate subtitles on Android with Vexo — free to try with optional lifetime unlock.">
+<meta name="twitter:image" content="https://aicareles.github.io/vexo/screenshots/1.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+<!-- Structured Data: HowTo + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "name": "How to Auto-Generate and Translate Video Subtitles on Android",
+      "description": "Use Vexo AI Subtitle Editor on Android to automatically transcribe speech into captions, translate subtitles, and export ready-to-post videos.",
+      "totalTime": "PT3M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Import your video into Vexo",
+          "text": "Open Vexo on your Android phone or tablet and pick any clip from your gallery."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Generate AI subtitles automatically",
+          "text": "Tap Auto Subtitles to transcribe speech with synced timestamps in seconds."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Translate or style captions",
+          "text": "Edit any wording, translate subtitles into another language if needed, and customize font, color, and position."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Export, compress, or convert",
+          "text": "Export your subtitled video at full quality or use Vexo's built-in video compressor and format converter before posting."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the easiest way to add auto subtitles to videos on Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vexo: AI Video Subtitle Editor automatically transcribes speech into timed subtitles on Android, lets you translate captions, and exports directly for TikTok, Reels, and YouTube Shorts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I translate subtitles into another language on Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Vexo includes built-in subtitle translation so you can reach international viewers without re-editing your timeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I improve AI subtitle accuracy for noisy recordings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Record close to the mic or clean background noise first using an audio denoiser such as AudioX before generating captions."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --ink-2: #334155;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.08);
+  --accent: #0071e3;
+  --accent-hover: #0062c4;
+  --soft: #f1f5f9;
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 28px rgba(15, 23, 42, 0.045);
+}
+[data-theme="dark"] {
+  --bg: #0b0d11;
+  --surface: #14171f;
+  --ink: #f8fafc;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --line: rgba(255, 255, 255, 0.09);
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --soft: rgba(255, 255, 255, 0.06);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(calc(100% - 36px), 860px); margin: 0 auto; }
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(245, 245, 247, 0.84);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+[data-theme="dark"] .topbar { background: rgba(11, 13, 17, 0.84); }
+.topbar-inner {
+  width: min(calc(100% - 36px), 1120px);
+  margin: 0 auto; height: 62px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800; font-size: 15px; letter-spacing: -0.03em;
+}
+.brand span { color: var(--muted); font-weight: 600; }
+.nav-right { display: flex; align-items: center; gap: 14px; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+.nav-right a:hover { color: var(--accent); }
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  display: inline-grid; place-items: center; cursor: pointer;
+}
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+article { padding: 48px 0 72px; }
+.breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.breadcrumb a:hover { color: var(--accent); }
+.badge {
+  display: inline-block; padding: 5px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  font-size: 12px; font-weight: 600; color: var(--accent);
+}
+h1 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(30px, 4.6vw, 44px);
+  line-height: 1.12; letter-spacing: -0.04em;
+  margin: 14px 0 16px;
+}
+.lead { font-size: 17px; color: var(--ink-2); margin: 0 0 28px; }
+.hero-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+  padding: 24px; box-shadow: var(--shadow);
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.hero-card-left { display: flex; align-items: center; gap: 16px; max-width: 520px; }
+.app-icon { width: 60px; height: 60px; border-radius: 15px; border: 1px solid var(--line); flex: none; }
+.hero-card h2 { margin: 0 0 4px; font-size: 18px; font-family: "Plus Jakarta Sans", sans-serif; }
+.hero-card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 600;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-secondary { background: var(--soft); color: var(--ink); border: 1px solid var(--line); }
+
+section.block { margin-top: 40px; }
+h2.sec-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 24px; letter-spacing: -0.03em; margin: 0 0 16px;
+}
+.steps { display: grid; gap: 14px; }
+.step-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+  padding: 20px 22px; box-shadow: var(--shadow);
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.step-num {
+  width: 32px; height: 32px; border-radius: 10px; flex: none;
+  background: var(--accent); color: #fff; font-weight: 800; font-size: 14px;
+  display: grid; place-items: center; margin-top: 2px;
+}
+.step-card h3 { margin: 0 0 6px; font-size: 16.5px; }
+.step-card p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+
+.tip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.tip-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: 18px 20px; box-shadow: var(--shadow);
+}
+.tip-card h3 { margin: 0 0 6px; font-size: 15px; }
+.tip-card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.tip-card a { color: var(--accent); font-weight: 600; }
+
+.faq-list { display: grid; gap: 12px; }
+details {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  padding: 16px 20px; box-shadow: var(--shadow);
+}
+summary { font-weight: 700; font-size: 15px; cursor: pointer; }
+details p { margin: 10px 0 0; font-size: 14px; color: var(--ink-2); }
+
+.cta-box {
+  margin-top: 44px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+  padding: 28px; text-align: center; box-shadow: var(--shadow);
+}
+.cta-box h2 { margin: 0 0 8px; font-family: "Plus Jakarta Sans", sans-serif; font-size: 22px; }
+.cta-box p { margin: 0 auto 18px; max-width: 540px; color: var(--muted); font-size: 14.5px; }
+.cta-box .btn-row { justify-content: center; }
+
+footer {
+  border-top: 1px solid var(--line); background: var(--surface);
+  padding: 24px 0; font-size: 13px; color: var(--muted);
+}
+.footer-inner {
+  width: min(calc(100% - 36px), 1120px); margin: 0 auto;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-inner a:hover { color: var(--accent); }
+@media (max-width: 680px) {
+  .tip-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../../">LEOX <span>STUDIO</span></a>
+    <div class="nav-right">
+      <a href="../../#apps">All Apps</a>
+      <a href="../../vexo/">Vexo</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2m-15.66 5.66-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <article>
+    <div class="breadcrumb"><a href="../../">Home</a> / Guides / Auto Subtitles on Android</div>
+    <span class="badge">Creator Workflow Guide</span>
+    <h1>How to Auto-Generate &amp; Translate Subtitles on Android for Reels, TikTok &amp; Shorts</h1>
+    <p class="lead">Most short-form viewers watch with sound off or in a second language. Here is a fast mobile workflow to generate synced AI captions, translate subtitles, and compress your final clip on Android — without locking yourself into a costly desktop suite.</p>
+
+    <div class="hero-card">
+      <div class="hero-card-left">
+        <img class="app-icon" src="../../vexo/icon.png" alt="Vexo icon">
+        <div>
+          <h2>Vexo: AI Video Subtitle Editor</h2>
+          <p>Auto captions, subtitle translation, video editing, compression &amp; format conversion. Optional lifetime unlock.</p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.vexo&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Dvexo" target="_blank" rel="noopener">Get Vexo on Play ↗</a>
+        <a class="btn btn-secondary" href="../../vexo/">App Details</a>
+      </div>
+    </div>
+
+    <section class="block">
+      <h2 class="sec-title">4-Step Subtitle Workflow on Android</h2>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Import your clip into Vexo</h3>
+            <p>Launch <strong>Vexo</strong> on your Android phone or tablet and pick any recorded video. You can trim dead air from the start or end before generating captions.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Generate AI captions automatically</h3>
+            <p>Run automatic speech-to-text to generate synced subtitles with accurate timing. Quickly tap any line to fix brand names or punctuation.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Translate subtitles for global audiences</h3>
+            <p>Use Vexo's built-in caption translator to localize your video into English, Spanish, Portuguese, Japanese, or other languages in seconds.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div>
+            <h3>Compress &amp; export ready for upload</h3>
+            <p>Export crisp MP4 videos sized for Reels, TikTok, or YouTube Shorts — or use Vexo's compressor to shrink large clips for WhatsApp and Telegram without blurry text.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title">Pro Tips for Cleaner Captions &amp; Audio</h2>
+      <div class="tip-grid">
+        <div class="tip-card">
+          <h3>Clean noisy voiceovers first</h3>
+          <p>Background hum lowers speech-to-text accuracy. Pair Vexo with <a href="../../audiox/">AudioX</a> to apply AI noise reduction, 5-band EQ, or vocal cleanup before subtitling.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Keep captions in the safe zone</h3>
+          <p>Place subtitles slightly above the bottom third so TikTok, Reels, and Shorts UI buttons never cover your text.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Short lines boost watch time</h3>
+          <p>Break long sentences into 1–2 short lines per beat so viewers can read effortlessly on small screens.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Save references &amp; hooks</h3>
+          <p>Collect inspiration links and script ideas from any social app using <a href="../../stash/">Stash</a> so your next video ideas stay organized.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details open>
+          <summary>Is Vexo free to try on Android?</summary>
+          <p>Yes. Vexo is free to download on Google Play, and offers both flexible subscriptions and a one-time lifetime license option.</p>
+        </details>
+        <details>
+          <summary>Can Vexo compress and convert video formats too?</summary>
+          <p>Yes. In addition to AI subtitle generation and caption translation, Vexo includes video trimming, compression, and format conversion in one app.</p>
+        </details>
+        <details>
+          <summary>What if I only need to cut, merge, or denoise an audio track?</summary>
+          <p>Try <a href="../../audiox/" style="color:var(--accent);font-weight:600">AudioX</a> — our dedicated Android audio editor with 16+ tools including MP3/WAV/FLAC conversion, AI denoise, and 5-band EQ.</p>
+        </details>
+      </div>
+    </section>
+
+    <div class="cta-box">
+      <h2>Add crisp AI subtitles to your next video</h2>
+      <p>Try Vexo free on Google Play — plus pair it with AudioX for studio-clean sound.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.vexo&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Dvexo" target="_blank" rel="noopener">Download Vexo ↗</a>
+        <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.aicareles.audiobox&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Daudiox" target="_blank" rel="noopener">Download AudioX ↗</a>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Leox Studio</span>
+    <div>
+      <a href="../../">All Apps</a> ·
+      <a href="../../vexo/">Vexo</a> ·
+      <a href="../../audiox/">AudioX</a> ·
+      <a href="../../stash/">Stash</a> ·
+      <a href="../airplay-to-android-tv/">AirPlay TV Guide</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById("themeToggle");
+  var meta = document.getElementById("themeColorMeta");
+  btn.addEventListener("click", function(){
+    var dark = document.documentElement.dataset.theme === "dark";
+    if (dark) { delete document.documentElement.dataset.theme; }
+    else { document.documentElement.dataset.theme = "dark"; }
+    if (meta) meta.content = dark ? "#f5f5f7" : "#0b0d11";
+    try { localStorage.setItem("leox-theme", dark ? "light" : "dark"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

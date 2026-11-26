@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to AirPlay from iPhone, iPad, or Mac to Android TV &amp; Google TV (2026 Guide) — Leox Studio</title>
+<meta name="description" content="Step-by-step guide to AirPlay videos, photos, music, and screen mirroring from iPhone, iPad, or Mac to Android TV, Google TV, and TV boxes without an Apple TV. Includes troubleshooting fixes.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://aicareles.github.io/guides/airplay-to-android-tv/">
+<meta name="theme-color" content="#f5f5f7" id="themeColorMeta">
+<script>
+(function(){
+  try {
+    if (localStorage.getItem("leox-theme") === "dark") {
+      document.documentElement.dataset.theme = "dark";
+      var m = document.getElementById("themeColorMeta");
+      if (m) m.content = "#0b0d11";
+    }
+  } catch (e) {}
+})();
+</script>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leox Studio">
+<meta property="og:title" content="How to AirPlay from iPhone, iPad, or Mac to Android TV &amp; Google TV">
+<meta property="og:description" content="Mirror your iPhone, iPad, or Mac screen to Android TV, Mi Box, Shield TV, or Google TV over Wi-Fi — free to try with optional one-time lifetime unlock.">
+<meta property="og:url" content="https://aicareles.github.io/guides/airplay-to-android-tv/">
+<meta property="og:image" content="https://aicareles.github.io/cast-receiver/screenshots/feature-graphic.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to AirPlay from iPhone, iPad, or Mac to Android TV">
+<meta name="twitter:description" content="Complete setup &amp; troubleshooting guide for AirPlay on Android TV and Google TV without an Apple TV.">
+<meta name="twitter:image" content="https://aicareles.github.io/cast-receiver/screenshots/feature-graphic.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+<!-- Structured Data: HowTo + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "name": "How to AirPlay from iPhone, iPad, or Mac to Android TV",
+      "description": "Use Cast Receiver or AirPlay Receiver on Android TV or Google TV to mirror screens and stream videos from Apple devices over Wi-Fi.",
+      "totalTime": "PT2M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Install an AirPlay receiver app on Android TV",
+          "text": "Open Google Play on your Android TV, Google TV, or TV box and install Cast Receiver (AirPlay + DLNA) or AirPlay Receiver (AirPlay-only)."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Connect both devices to the same Wi-Fi network",
+          "text": "Make sure your Android TV and your iPhone, iPad, or Mac are connected to the same local Wi-Fi network with VPNs disabled."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Start Screen Mirroring or AirPlay",
+          "text": "Open the receiver app on your TV, then open Control Center on iPhone/iPad/Mac, tap Screen Mirroring (or the AirPlay icon in a video player), and choose your TV name."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I AirPlay to Android TV without an Apple TV?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Installing a receiver app like Cast Receiver or AirPlay Receiver from Google Play turns your Android TV, Google TV, or TV box into an AirPlay-compatible target over local Wi-Fi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to pay a monthly subscription to use AirPlay on Android TV?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Both Cast Receiver and AirPlay Receiver by Leox Studio are free to download and try, and offer an optional one-time lifetime unlock in addition to flexible subscriptions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my Android TV not showing up in iPhone Screen Mirroring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most discovery issues are caused by devices being on different subnets or guest Wi-Fi, an active VPN on iPhone/Mac, AP Isolation enabled on the router, or the receiver app not running in the foreground on the TV."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I choose Cast Receiver or AirPlay Receiver?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose Cast Receiver if your household uses both Apple (AirPlay) and Android/Windows/NAS (DLNA) devices. Choose AirPlay Receiver if you only need a lightweight, dedicated AirPlay receiver for iPhone, iPad, and Mac."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --ink-2: #334155;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.08);
+  --line-strong: rgba(15, 23, 42, 0.14);
+  --accent: #0071e3;
+  --accent-hover: #0062c4;
+  --soft: #f1f5f9;
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 28px rgba(15, 23, 42, 0.045);
+}
+[data-theme="dark"] {
+  --bg: #0b0d11;
+  --surface: #14171f;
+  --ink: #f8fafc;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.17);
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --soft: rgba(255, 255, 255, 0.06);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(calc(100% - 36px), 860px); margin: 0 auto; }
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(245, 245, 247, 0.84);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+[data-theme="dark"] .topbar { background: rgba(11, 13, 17, 0.84); }
+.topbar-inner {
+  width: min(calc(100% - 36px), 1120px);
+  margin: 0 auto;
+  height: 62px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800; font-size: 15px; letter-spacing: -0.03em;
+  display: inline-flex; align-items: center; gap: 9px;
+}
+.brand span { color: var(--muted); font-weight: 600; }
+.nav-right { display: flex; align-items: center; gap: 14px; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+.nav-right a:hover { color: var(--accent); }
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  display: inline-grid; place-items: center; cursor: pointer;
+}
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+article { padding: 48px 0 72px; }
+.breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.breadcrumb a:hover { color: var(--accent); }
+.badge {
+  display: inline-block; padding: 5px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  font-size: 12px; font-weight: 600; color: var(--accent);
+}
+h1 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(30px, 4.6vw, 44px);
+  line-height: 1.12; letter-spacing: -0.04em;
+  margin: 14px 0 16px;
+}
+.lead { font-size: 17px; color: var(--ink-2); margin: 0 0 28px; }
+.hero-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+  padding: 24px; box-shadow: var(--shadow);
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.hero-card-left { display: flex; align-items: center; gap: 16px; max-width: 520px; }
+.app-icon { width: 60px; height: 60px; border-radius: 15px; border: 1px solid var(--line); flex: none; }
+.hero-card h2 { margin: 0 0 4px; font-size: 18px; font-family: "Plus Jakarta Sans", sans-serif; }
+.hero-card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 600;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-secondary { background: var(--soft); color: var(--ink); border: 1px solid var(--line); }
+
+section.block { margin-top: 40px; }
+h2.sec-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 24px; letter-spacing: -0.03em; margin: 0 0 16px;
+}
+.steps { display: grid; gap: 14px; }
+.step-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+  padding: 20px 22px; box-shadow: var(--shadow);
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.step-num {
+  width: 32px; height: 32px; border-radius: 10px; flex: none;
+  background: var(--accent); color: #fff; font-weight: 800; font-size: 14px;
+  display: grid; place-items: center; margin-top: 2px;
+}
+.step-card h3 { margin: 0 0 6px; font-size: 16.5px; }
+.step-card p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+
+.fix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.fix-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: 18px 20px; box-shadow: var(--shadow);
+}
+.fix-card h3 { margin: 0 0 6px; font-size: 15px; }
+.fix-card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+
+.table-wrap {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+  overflow-x: auto; box-shadow: var(--shadow);
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); background: var(--soft); }
+tr:last-child td { border-bottom: 0; }
+td a { color: var(--accent); font-weight: 600; }
+
+.faq-list { display: grid; gap: 12px; }
+details {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  padding: 16px 20px; box-shadow: var(--shadow);
+}
+summary { font-weight: 700; font-size: 15px; cursor: pointer; }
+details p { margin: 10px 0 0; font-size: 14px; color: var(--ink-2); }
+
+.cta-box {
+  margin-top: 44px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+  padding: 28px; text-align: center; box-shadow: var(--shadow);
+}
+.cta-box h2 { margin: 0 0 8px; font-family: "Plus Jakarta Sans", sans-serif; font-size: 22px; }
+.cta-box p { margin: 0 auto 18px; max-width: 540px; color: var(--muted); font-size: 14.5px; }
+.cta-box .btn-row { justify-content: center; }
+
+footer {
+  border-top: 1px solid var(--line); background: var(--surface);
+  padding: 24px 0; font-size: 13px; color: var(--muted);
+}
+.footer-inner {
+  width: min(calc(100% - 36px), 1120px); margin: 0 auto;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-inner a:hover { color: var(--accent); }
+@media (max-width: 680px) {
+  .fix-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../../">LEOX <span>STUDIO</span></a>
+    <div class="nav-right">
+      <a href="../../#apps">All Apps</a>
+      <a href="../../cast-receiver/">Cast Receiver</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2m-15.66 5.66-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <article>
+    <div class="breadcrumb"><a href="../../">Home</a> / Guides / AirPlay to Android TV</div>
+    <span class="badge">Android TV &amp; Google TV Setup Guide</span>
+    <h1>How to AirPlay from iPhone, iPad, or Mac to Android TV (Without an Apple TV)</h1>
+    <p class="lead">Android TV, Google TV, Mi Box, and NVIDIA Shield don't always include built-in AirPlay. Here is how to mirror your iPhone, iPad, or Mac screen — or stream videos and music — in under 2 minutes over local Wi-Fi, with no mandatory monthly subscription.</p>
+
+    <div class="hero-card">
+      <div class="hero-card-left">
+        <img class="app-icon" src="../../cast-receiver/icon.png" alt="Cast Receiver icon">
+        <div>
+          <h2>Recommended: Cast Receiver (AirPlay + DLNA)</h2>
+          <p>Free to install and try on Google Play. Supports optional one-time lifetime unlock.</p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Dcast_receiver" target="_blank" rel="noopener">Get Cast Receiver ↗</a>
+        <a class="btn btn-secondary" href="../../cast-receiver/">App Details</a>
+      </div>
+    </div>
+
+    <section class="block">
+      <h2 class="sec-title">3-Step Setup on Android TV &amp; Google TV</h2>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Install an AirPlay receiver on your TV</h3>
+            <p>Open the Google Play Store on your Android TV, Google TV, TV box, or projector and install <strong>Cast Receiver</strong> (if you also want DLNA for Android/Windows/NAS) or <strong>AirPlay Receiver</strong> (if you only use Apple devices).</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Connect TV and Apple device to the same Wi-Fi</h3>
+            <p>Confirm your TV and iPhone, iPad, or Mac are on the same local Wi-Fi network (avoid Guest Wi-Fi). Launch the receiver app on your TV and note the device name shown on screen.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Start Screen Mirroring or AirPlay</h3>
+            <p>On <strong>iPhone/iPad</strong>, swipe down from the top-right corner to open Control Center, tap <strong>Screen Mirroring</strong>, and select your TV. On <strong>Mac</strong>, click Control Center in the menu bar → <strong>Screen Mirroring</strong> (or click the AirPlay icon in QuickTime / Safari / Music).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title">Which Leox Studio Receiver Should You Pick?</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>App</th>
+              <th>Protocols</th>
+              <th>Best For</th>
+              <th>Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cast Receiver</strong></td>
+              <td>AirPlay + DLNA / UPnP</td>
+              <td>Mixed homes (iPhone, Mac, Android, Windows, NAS)</td>
+              <td><a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Dcast_receiver" target="_blank" rel="noopener">Google Play ↗</a></td>
+            </tr>
+            <tr>
+              <td><strong>AirPlay Receiver</strong></td>
+              <td>AirPlay Only</td>
+              <td>Lightweight, dedicated setup for iPhone, iPad &amp; Mac</td>
+              <td><a href="https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Dairplay_receiver" target="_blank" rel="noopener">Google Play ↗</a></td>
+            </tr>
+            <tr>
+              <td><strong>DLNA Receiver</strong></td>
+              <td>DLNA / UPnP Only</td>
+              <td>Android phones, Windows Media Player, VLC, Kodi &amp; NAS</td>
+              <td><a href="https://play.google.com/store/apps/details?id=com.aicareles.dlnareceiver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Ddlna_receiver" target="_blank" rel="noopener">Google Play ↗</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title">AirPlay Not Showing Android TV? 4 Quick Fixes</h2>
+      <div class="fix-grid">
+        <div class="fix-card">
+          <h3>1. Turn off VPNs temporarily</h3>
+          <p>Active VPNs on iPhone, Mac, or Android TV route traffic away from local mDNS discovery. Pause the VPN while casting.</p>
+        </div>
+        <div class="fix-card">
+          <h3>2. Check Guest Wi-Fi &amp; AP Isolation</h3>
+          <p>Make sure neither device is on a Guest SSID. On router settings, disable "AP Isolation" or "Client Isolation" so devices can see each other.</p>
+        </div>
+        <div class="fix-card">
+          <h3>3. Allow Local Network permission on iOS</h3>
+          <p>On iPhone/iPad, open Settings → Privacy &amp; Security → Local Network and ensure the app you are casting from has Local Network enabled.</p>
+        </div>
+        <div class="fix-card">
+          <h3>4. Use 5 GHz Wi-Fi or Ethernet for TV</h3>
+          <p>For smoother 1080p/4K video and lower screen-mirroring latency, connect your Android TV via Ethernet or 5 GHz Wi-Fi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details open>
+          <summary>Can I AirPlay to Android TV without an Apple TV?</summary>
+          <p>Yes. Installing Cast Receiver or AirPlay Receiver from Google Play lets any Android TV, Google TV, TV box, or projector receive AirPlay mirroring, video, audio, and photos directly over Wi-Fi.</p>
+        </details>
+        <details>
+          <summary>Is there a one-time purchase option instead of a monthly subscription?</summary>
+          <p>Yes. Unlike many casting apps that require ongoing monthly fees, all Leox Studio apps are free to try and offer both flexible subscriptions and a one-time lifetime unlock.</p>
+        </details>
+        <details>
+          <summary>How do I cast from an Android phone to my TV?</summary>
+          <p>Pair your TV receiver with <a href="../../screencast/" style="color:var(--accent);font-weight:600">Screen Cast - Cast to TV</a> on your Android phone to stream local videos, photos, music, and documents.</p>
+        </details>
+      </div>
+    </section>
+
+    <div class="cta-box">
+      <h2>Ready to turn your Android TV into an AirPlay receiver?</h2>
+      <p>Install Cast Receiver for AirPlay + DLNA, or AirPlay Receiver for a dedicated Apple-only setup. Free to try on Google Play.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Dcast_receiver" target="_blank" rel="noopener">Download Cast Receiver ↗</a>
+        <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dseo_guide%26utm_campaign%3Dairplay_receiver" target="_blank" rel="noopener">Download AirPlay Receiver ↗</a>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Leox Studio</span>
+    <div>
+      <a href="../../">All Apps</a> ·
+      <a href="../../cast-receiver/">Cast Receiver</a> ·
+      <a href="../../airplay/">AirPlay Receiver</a> ·
+      <a href="../../dlna-receiver/">DLNA Receiver</a> ·
+      <a href="../auto-subtitles-android/">AI Subtitle Guide</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById("themeToggle");
+  var meta = document.getElementById("themeColorMeta");
+  btn.addEventListener("click", function(){
+    var dark = document.documentElement.dataset.theme === "dark";
+    if (dark) { delete document.documentElement.dataset.theme; }
+    else { document.documentElement.dataset.theme = "dark"; }
+    if (meta) meta.content = dark ? "#f5f5f7" : "#0b0d11";
+    try { localStorage.setItem("leox-theme", dark ? "light" : "dark"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

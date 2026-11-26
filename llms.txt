@@ -33,7 +33,12 @@
 - [Stash: Bookmark & Link Saver](https://aicareles.github.io/stash/): Smart bookmark manager and link saver with AI organization and search for Android phones and tablets. Free with subscription or lifetime unlock.
   - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.stash
 
-- [AudioX - Audio Editor, MP3 Cut](https://play.google.com/store/apps/details?id=com.aicareles.audiobox): Audio editor and MP3 cutter for Android phones and tablets. Trim, cut, merge, and convert audio files. Free with subscription or lifetime unlock.
+- [AudioX - Audio Editor, MP3 Cut](https://aicareles.github.io/audiox/): Audio editor and MP3 cutter for Android phones and tablets. Trim, cut, merge, convert (MP3/WAV/FLAC), apply 5-band EQ, and AI denoise audio files. Free with subscription or lifetime unlock.
+  - Google Play: https://play.google.com/store/apps/details?id=com.aicareles.audiobox
+
+## Guides & Tutorials
+- [How to AirPlay from iPhone, iPad, or Mac to Android TV & Google TV](https://aicareles.github.io/guides/airplay-to-android-tv/): 3-step setup guide, Cast Receiver vs AirPlay Receiver vs DLNA Receiver comparison, and Wi-Fi troubleshooting fixes.
+- [How to Auto-Generate & Translate Subtitles on Android](https://aicareles.github.io/guides/auto-subtitles-android/): Mobile creator workflow for auto-captioning and translating videos for Reels, TikTok, and YouTube Shorts using Vexo and AudioX.
 
 ## Pricing Model
 All Leox Studio apps are free to install and try on Google Play, offering both flexible subscriptions and a one-time lifetime license option (no mandatory recurring fee).

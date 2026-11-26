@@ -871,6 +871,10 @@ img {
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
+.guide-card.guide-wide {
+  grid-column: span 2;
+}
+
 .guide-card:hover {
   transform: translateY(-2px);
   border-color: var(--line-strong);
@@ -1041,6 +1045,9 @@ footer {
   .principles-grid {
     grid-template-columns: 1fr;
   }
+  .guide-card.guide-wide {
+    grid-column: span 1;
+  }
   .search-box {
     width: 100%;
   }
@@ -1164,7 +1171,7 @@ footer {
             <span class="tag">Android TV</span>
           </div>
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver" target="_blank" rel="noopener">Get on Google Play ↗</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaserver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhomepage%26utm_campaign%3Dcast_receiver" target="_blank" rel="noopener">Get on Google Play ↗</a>
             <a class="btn btn-secondary" href="cast-receiver/">Details →</a>
           </div>
         </div>
@@ -1213,7 +1220,7 @@ footer {
             <span class="tag">Video Editor</span>
           </div>
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.vexo" target="_blank" rel="noopener">Get on Google Play ↗</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.vexo&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhomepage%26utm_campaign%3Dvexo" target="_blank" rel="noopener">Get on Google Play ↗</a>
             <a class="btn btn-secondary" href="vexo/">Details →</a>
           </div>
         </div>
@@ -1244,7 +1251,7 @@ footer {
             <span class="tag">Reminders</span>
           </div>
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.stash" target="_blank" rel="noopener">Get on Google Play ↗</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.stash&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhomepage%26utm_campaign%3Dstash" target="_blank" rel="noopener">Get on Google Play ↗</a>
             <a class="btn btn-secondary" href="stash/">Details →</a>
           </div>
         </div>
@@ -1275,7 +1282,7 @@ footer {
             <span class="tag">5-Band EQ</span>
           </div>
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.audiobox" target="_blank" rel="noopener">Get on Google Play ↗</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.audiobox&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhomepage%26utm_campaign%3Daudiox" target="_blank" rel="noopener">Get on Google Play ↗</a>
             <a class="btn btn-secondary" href="audiox/">Details →</a>
           </div>
         </div>
@@ -1301,7 +1308,7 @@ footer {
             <span class="tag">Lightweight</span>
           </div>
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver" target="_blank" rel="noopener">Google Play ↗</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.airplayreceiver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhomepage%26utm_campaign%3Dairplay_receiver" target="_blank" rel="noopener">Google Play ↗</a>
             <a class="btn btn-secondary" href="airplay/">Details →</a>
           </div>
         </div>
@@ -1333,7 +1340,7 @@ footer {
             <span class="tag">Local Wi-Fi</span>
           </div>
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnareceiver" target="_blank" rel="noopener">Google Play ↗</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnareceiver&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhomepage%26utm_campaign%3Ddlna_receiver" target="_blank" rel="noopener">Google Play ↗</a>
             <a class="btn btn-secondary" href="dlna-receiver/">Details →</a>
           </div>
         </div>
@@ -1359,7 +1366,7 @@ footer {
             <span class="tag">DLNA Sender</span>
           </div>
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaclient" target="_blank" rel="noopener">Google Play ↗</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.aicareles.dlnaclient&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhomepage%26utm_campaign%3Dscreen_cast" target="_blank" rel="noopener">Google Play ↗</a>
             <a class="btn btn-secondary" href="screencast/">Details →</a>
           </div>
         </div>
@@ -1406,6 +1413,21 @@ footer {
         <h3>Cast from your Android phone to a TV</h3>
         <p>Install Screen Cast on your phone to send media to Smart TVs, Chromecast, or DLNA.</p>
         <span class="guide-link">Explore Screen Cast →</span>
+      </a>
+    </div>
+
+    <div class="guide-grid" style="margin-top:16px">
+      <a class="guide-card guide-wide" href="guides/airplay-to-android-tv/">
+        <span class="guide-step">Setup &amp; Troubleshooting Guide</span>
+        <h3>How to AirPlay from iPhone, iPad, or Mac to Android TV</h3>
+        <p>3-step Wi-Fi setup, receiver comparison, and 4 quick fixes when your TV doesn't appear.</p>
+        <span class="guide-link">Read AirPlay Guide →</span>
+      </a>
+      <a class="guide-card guide-wide" href="guides/auto-subtitles-android/">
+        <span class="guide-step">Creator Workflow Guide</span>
+        <h3>How to Auto-Generate &amp; Translate Subtitles on Android</h3>
+        <p>Transcribe, translate, and export captions for Reels, TikTok, and Shorts with Vexo &amp; AudioX.</p>
+        <span class="guide-link">Read Subtitle Guide →</span>
       </a>
     </div>
   </section>
@@ -1473,6 +1495,8 @@ footer {
         <a href="vexo/">Vexo</a>
         <a href="stash/">Stash</a>
         <a href="audiox/">AudioX</a>
+        <a href="guides/airplay-to-android-tv/">AirPlay Guide</a>
+        <a href="guides/auto-subtitles-android/">Subtitle Guide</a>
         <a href="privacy_policy.html">Privacy Policy</a>
         <a href="https://play.google.com/store/apps/developer?id=LLTech" target="_blank" rel="noopener">Google Play ↗</a>
       </div>
